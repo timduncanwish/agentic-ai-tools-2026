@@ -1,0 +1,40 @@
+{
+  "apiKey": {
+    "openai": "YOUR_OPENAI_API_KEY",
+    "googleTrends": "YOUR_GOOGLE_TRENDS_API_KEY",
+    "amazon": {
+      "accessKey": "YOUR_AMAZON_ACCESS_KEY",
+      "secretKey": "YOUR_AMAZON_SECRET_KEY",
+      "associateId": "your-associate-id-20"
+    },
+    "vercel": "YOUR_VERCEL_TOKEN",
+    "netlify": "YOUR_NETLIFY_TOKEN"
+  },
+  "defaults": {
+    "deployPlatform": "vercel",
+    "outputDir": "./dist",
+    "targetWords": 2000,
+    "tone": "informative",
+    "language": "en"
+  },
+  "monetization": {
+    "adsense": {
+      "enabled": true,
+      "publisherId": "YOUR_ADSENSE_PUBLISHER_ID"
+    },
+    "amazon": {
+      "enabled": true,
+      "affiliateId": "your-associate-id-20"
+    },
+    "email": {
+      "enabled": true,
+      "provider": "convertkit",
+      "apiKey": "YOUR_CONVERTKIT_API_KEY",
+      "formId": "YOUR_FORM_ID"
+    }
+  },
+  "seo": {
+    "gaTrackingId": "YOUR_GA_TRACKING_ID",
+    "gscVerification": "YOUR_GSC_VERIFICATION_CODE"
+  }
+}

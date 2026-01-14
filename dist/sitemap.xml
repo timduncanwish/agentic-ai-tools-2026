@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Page -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Reviews -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/auto-gpt-complete-review.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/claude-code-ultimate-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Comparisons -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/crewai-vs-autogen-comparison.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Guides -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/how-to-choose-ai-agent.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/agentic-ai-best-practices.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/free-ai-agents-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/ai-roi-calculator.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/ai-agent-case-studies.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/agentic-ai-trends-2026.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/beginners-guide-to-ai-agents.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/top-10-ai-tools-2026.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Tool Tutorials -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/getting-started-with-autogen.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/agentgpt-tutorial.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/langchain-agents-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/zapier-nla-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/jasper-ai-agents-review.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/openai-swarm-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/babyagi-tutorial.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/microsoft-autogen-review.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/flowise-ai-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/dify-ai-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/langflow-tutorial.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Advanced Guides -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/vector-database-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/ai-agent-security-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/prompt-engineering-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/ai-agent-testing-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/ai-agent-scaling-guide.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Essential Pages -->
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/about.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/privacy.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/terms.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://agentic-ai-tools-2026.vercel.app/contact.html</loc>
+        <lastmod>2026-01-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>

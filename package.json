@@ -1,0 +1,34 @@
+{
+  "name": "trend-rush-skill",
+  "version": "1.0.0",
+  "description": "1小时内从热词到赚钱网站的自动化系统",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "monitor": "bash scripts/trend-monitor.sh",
+    "generate": "node scripts/content-generator.js",
+    "deploy": "node scripts/deploy.js",
+    "full": "bash scripts/trend-monitor.sh && node scripts/content-generator.js && node scripts/deploy.js"
+  },
+  "keywords": [
+    "trends",
+    "monetization",
+    "seo",
+    "affiliate",
+    "adsense"
+  ],
+  "author": "Claude + User",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "google-trends-api": "^4.9.2",
+    "express": "^4.18.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

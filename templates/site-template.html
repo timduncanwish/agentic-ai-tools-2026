@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{KEYWORD}} - Complete Guide 2024</title>
+    <meta name="description" content="Discover {{KEYWORD}}: Complete reviews, guides, and expert tips.">
+    <meta name="keywords" content="{{KEYWORD}}, {{KEYWORD}} reviews, best {{KEYWORD}}, {{KEYWORD}} guide">
+    <link rel="canonical" href="https://{{DOMAIN}}/{{SLUG}}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{KEYWORD}} - Ultimate Guide">
+    <meta property="og:description" content="Everything you need to know about {{KEYWORD}}">
+    <meta property="og:image" content="{{IMAGE_URL}}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{KEYWORD}} - Complete Guide">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{KEYWORD}} Guide",
+      "author": {
+        "@type": "Organization",
+        "name": "{{SITE_NAME}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{SITE_NAME}}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{LOGO_URL}}"
+        }
+      }
+    }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-blue-600">{{SITE_NAME}}</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#reviews" class="text-gray-700 hover:text-blue-600">Reviews</a>
+                    <a href="#guides" class="text-gray-700 hover:text-blue-600">Guides</a>
+                    <a href="#comparison" class="text-gray-700 hover:text-blue-600">Compare</a>
+                    <a href="#faq" class="text-gray-700 hover:text-blue-600">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-6">{{KEYWORD}}</h1>
+                <p class="text-xl mb-8">The Complete Guide for 2024</p>
+                <div class="flex justify-center gap-4">
+                    <a href="#reviews" class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100">
+                        Read Reviews
+                    </a>
+                    <a href="#guide" class="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 快速摘要框 -->
+    <section class="max-w-7xl mx-auto px-4 -mt-10">
+        <div class="bg-white rounded-xl shadow-xl p-8">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-600">#1</div>
+                    <div class="text-gray-600">Ranking</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-green-600">4.8★</div>
+                    <div class="text-gray-600">User Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-600">10K+</div>
+                    <div class="text-gray-600">Reviews</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-orange-600">$$</div>
+                    <div class="text-gray-600">Price Range</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区 -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <!-- 什么是{{KEYWORD}} -->
+        <section id="intro" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">What is {{KEYWORD}}?</h2>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                {{INTRO_CONTENT}}
+            </div>
+        </section>
+
+        <!-- Top Picks 产品推荐 -->
+        <section id="reviews" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Top {{KEYWORD}} Picks</h2>
+            <div class="space-y-6" id="product-list">
+                <!-- 产品卡片将通过JS动态加载 -->
+            </div>
+        </section>
+
+        <!-- 对比表 -->
+        <section id="comparison" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Quick Comparison</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg shadow">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rating</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Features</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-table">
+                        <!-- 动态填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 详细指南 -->
+        <section id="guides" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">How to Choose the Right {{KEYWORD}}</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">📊 Key Factors</h3>
+                    <ul class="space-y-2">
+                        <li>✓ Performance & Speed</li>
+                        <li>✓ Ease of Use</li>
+                        <li>✓ Price & Value</li>
+                        <li>✓ Customer Support</li>
+                        <li>✓ Features & Functionality</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">🎯 Pro Tips</h3>
+                    <ul class="space-y-2">
+                        <li>• Look for free trials</li>
+                        <li>• Check user reviews</li>
+                        <li>• Compare pricing plans</li>
+                        <li>• Test customer support</li>
+                        <li>• Consider scalability</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ 项 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 广告位 -->
+    <div class="max-w-7xl mx-auto px-4 mb-8">
+        <div class="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <p class="text-gray-500">Advertisement Space</p>
+            <p class="text-sm text-gray-400">728x90 Leaderboard</p>
+        </div>
+    </div>
+
+    <!-- 邮件订阅 -->
+    <section class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-16">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Get Expert {{KEYWORD}} Tips</h2>
+            <p class="mb-8">Join 10,000+ subscribers. Weekly tips, deals, and insights.</p>
+            <form id="subscribe-form" class="flex gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" required
+                    class="flex-1 px-4 py-3 rounded-lg text-gray-900">
+                <button type="submit" class="px-8 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100">
+                    Subscribe
+                </button>
+            </form>
+            <p class="mt-4 text-sm opacity-80">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">{{SITE_NAME}}</h3>
+                    <p class="text-gray-400">Your trusted source for {{KEYWORD}} reviews and guides.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/about" class="hover:text-white">About</a></li>
+                        <li><a href="/contact" class="hover:text-white">Contact</a></li>
+                        <li><a href="/privacy" class="hover:text-white">Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/reviews" class="hover:text-white">Reviews</a></li>
+                        <li><a href="/guides" class="hover:text-white">Guides</a></li>
+                        <li><a href="/deals" class="hover:text-white">Deals</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Affiliate Disclosure</h4>
+                    <p class="text-sm text-gray-400">We may earn a commission when you purchase through our links. This helps us create free content.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 {{SITE_NAME}}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 配置
+        const CONFIG = {
+            keyword: '{{KEYWORD}}',
+            apiEndpoint: '/api'
+        };
+
+        // 动态加载产品
+        async function loadProducts() {
+            try {
+                const response = await fetch(`${CONFIG.apiEndpoint}/products?keyword=${encodeURIComponent(CONFIG.keyword)}`);
+                const products = await response.json();
+
+                renderProducts(products);
+                renderComparison(products);
+            } catch (error) {
+                console.error('Failed to load products:', error);
+            }
+        }
+
+        function renderProducts(products) {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map((product, index) => `
+                <div class="bg-white rounded-lg shadow-lg p-6 flex gap-6">
+                    <img src="${product.image}" alt="${product.title}" class="w-32 h-32 object-cover rounded">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded">#${index + 1}</span>
+                            <span class="text-yellow-500">${'★'.repeat(Math.floor(product.rating))}</span>
+                            <span class="text-gray-600">(${product.reviews} reviews)</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">${product.title}</h3>
+                        <p class="text-gray-600 mb-4">${product.description}</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-green-600">$${product.price}</span>
+                                ${product.oldPrice ? `<span class="text-gray-400 line-through ml-2">$${product.oldPrice}</span>` : ''}
+                            </div>
+                            <a href="${product.affiliateLink}" target="_blank" rel="nofollow"
+                                class="px-6 py-2 bg-yellow-400 text-gray-900 font-semibold rounded hover:bg-yellow-500">
+                                View on Amazon →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderComparison(products) {
+            const tbody = document.getElementById('comparison-table');
+            tbody.innerHTML = products.map(product => `
+                <tr class="border-b">
+                    <td class="px-6 py-4">${product.title}</td>
+                    <td class="px-6 py-4">
+                        <span class="text-yellow-500">${'★'.repeat(Math.floor(product.rating))}</span>
+                        ${product.rating}
+                    </td>
+                    <td class="px-6 py-4 font-semibold">$${product.price}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">${product.features.join(', ')}</td>
+                    <td class="px-6 py-4">
+                        <a href="${product.affiliateLink}" target="_blank" class="text-blue-600 hover:text-blue-800">View Deal</a>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // 加载 FAQ
+        async function loadFAQ() {
+            const faqs = [
+                { q: `What is the best ${CONFIG.keyword}?`, a: 'The best option depends on your specific needs and budget. Check our comparison table above.' },
+                { q: `How much does ${CONFIG.keyword} cost?`, a: 'Prices vary from $X to $Y. We recommend comparing features to find the best value.' },
+                { q: `Is ${CONFIG.keyword} worth it?`, a: 'Based on our analysis, yes. Most users see significant benefits within the first month.' }
+            ];
+
+            const container = document.getElementById('faq-container');
+            container.innerHTML = faqs.map(faq => `
+                <div class="bg-white rounded-lg shadow">
+                    <button class="w-full px-6 py-4 text-left font-semibold" onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        ${faq.q}
+                    </button>
+                    <div class="hidden px-6 py-4 text-gray-700 border-t">
+                        ${faq.a}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            loadFAQ();
+
+            // 邮件订阅表单
+            document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input').value;
+                // 集成邮件服务 API
+                alert('Thank you for subscribing!');
+            });
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{GA_TRACKING_ID}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{GA_TRACKING_ID}}');
+    </script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:css",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,

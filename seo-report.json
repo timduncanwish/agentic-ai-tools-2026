@@ -1,0 +1,2002 @@
+{
+  "generated": "2026-01-24",
+  "totalFiles": 81,
+  "issues": {
+    "error": 2,
+    "warning": 296,
+    "info": 79
+  },
+  "files": [
+    {
+      "file": "about.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "adobe-firefly-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "agentgpt-tutorial.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "agentic-ai-best-practices.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "agentic-ai-trends-2026.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-agent-architecture.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-agent-case-studies.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-agent-scaling-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-agent-security-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-agent-testing-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-chatbot-guide.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-content-creation-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-customer-support-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-email-marketing-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-in-ecommerce-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-in-education-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-in-finance-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-in-healthcare-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-integration-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-roi-calculator.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-security-checklist.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-seo-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "ai-workflow-automation-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "aider-ai-coding-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "auto-gpt-complete-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "autogen-vs-crewai-comparison.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "babyagi-tutorial.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "beginners-guide-to-ai-agents.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "best-ai-agents-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "building-chatbots-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "chatgpt-complete-guide-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "claude-ai-complete-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "claude-code-ultimate-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "claude-code-vscode-tutorial.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "claude-subscription-guide-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "codeium-ai-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "contact.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "continuedev-tutorial.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "crewai-vs-autogen-comparison.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "cursor-ai-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "dalle-3-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "dify-ai-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "elevenlabs-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "fine-tuning-guide-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "fixie-ai-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "flowise-ai-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "free-ai-agents-guide.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "getting-started-with-autogen.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "github-copilot-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "google-gemini-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "google6964fbc8e0c4d0a5.html",
+      "issues": 9,
+      "details": [
+        {
+          "type": "error",
+          "message": "Missing <title> tag"
+        },
+        {
+          "type": "error",
+          "message": "Missing meta description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing canonical link"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        },
+        {
+          "type": "info",
+          "message": "Missing structured data (JSON-LD)"
+        }
+      ]
+    },
+    {
+      "file": "index-optimized.html",
+      "issues": 0,
+      "details": []
+    },
+    {
+      "file": "index-quantum.html",
+      "issues": 0,
+      "details": []
+    },
+    {
+      "file": "index.html",
+      "issues": 0,
+      "details": []
+    },
+    {
+      "file": "jasper-ai-agents-review.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "langchain-agents-guide.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "langchain-vs-autogen-comparison.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "langflow-tutorial.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "local-llms-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "microsoft-autogen-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "microsoft-copilot-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "midjourney-complete-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "notion-ai-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "openai-swarm-guide.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "perplexity-ai-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "privacy.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "prompt-engineering-examples.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "prompt-engineering-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "rag-complete-guide-2026.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "runway-ml-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "smol-ai-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "sourcegraph-cody-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "stable-diffusion-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "stack-ai-tutorial.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "synthesia-ai-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "tabnine-ai-review.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "terms.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "tools-directory.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "top-10-ai-tools-2026.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "vector-database-guide.html",
+      "issues": 5,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing meta keywords"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    },
+    {
+      "file": "zapier-nla-guide.html",
+      "issues": 4,
+      "details": [
+        {
+          "type": "warning",
+          "message": "Missing og:title"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:description"
+        },
+        {
+          "type": "warning",
+          "message": "Missing og:image"
+        },
+        {
+          "type": "info",
+          "message": "Missing twitter:card"
+        }
+      ]
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 # robots.txt for Agentic AI Tools 2026
+# Last updated: 2026-01-24
 
 User-agent: *
 Allow: /
 
-# Disallow specific paths if any
-# Disallow: /private/
+# Disallow specific paths
+Disallow: /node_modules/
+Disallow: /scripts/
+Disallow: /.git/
 
 # Sitemap location
 Sitemap: https://agenticaitools2026.com/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1

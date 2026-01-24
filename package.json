@@ -8,7 +8,10 @@
     "monitor": "bash scripts/trend-monitor.sh",
     "generate": "node scripts/content-generator.js",
     "deploy": "node scripts/deploy.js",
-    "full": "bash scripts/trend-monitor.sh && node scripts/content-generator.js && node scripts/deploy.js"
+    "full": "bash scripts/trend-monitor.sh && node scripts/content-generator.js && node scripts/deploy.js",
+    "seo": "node generate-sitemap.js",
+    "seo:audit": "node seo-optimizer.js",
+    "seo:all": "node generate-sitemap.js && node seo-optimizer.js"
   },
   "keywords": [
     "trends",

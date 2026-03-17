@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Agentic AI Tools 2026</title>
+  <meta name="description" content="Local admin panel for reviewing submissions, approving listings, and editing the tool catalog.">
+  <link rel="stylesheet" href="/styles/futurepedia-redesign.css">
+</head>
+<body data-page="admin">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand-lockup" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">Agentic AI Tools 2026</span>
+            <span class="brand-subtitle">Local admin and editorial operations</span>
+          </span>
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/tools-directory.html">Directory</a>
+          <a href="/submit-tool.html">Submit page</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero">
+        <div class="section-inner">
+          <div class="hero-panel">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <span class="eyebrow">Operations</span>
+                <h1>Review submissions and manage the catalog.</h1>
+                <p>
+                  This local admin page is the next step after the public directory MVP. It gives you a simple workflow
+                  to review submissions, approve them into the catalog, and manually create or edit tools without touching HTML.
+                </p>
+              </div>
+              <div class="hero-side">
+                <div class="glass-card">
+                  <strong>What this unlocks</strong>
+                  <p class="meta-copy">Editorial review queue, structured approval, manual catalog editing, and a cleaner path to a future CMS.</p>
+                </div>
+                <div class="glass-card">
+                  <strong>Scope</strong>
+                  <p class="meta-copy">No auth layer yet. This page is intended for local or private deployment while validating the product workflow.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div id="adminStats" class="admin-stats"></div>
+          <div id="adminStatus" class="status" style="margin-top: 14px;"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="admin-layout">
+            <div class="admin-stack">
+              <div class="panel" style="padding: 22px;">
+                <h2>Submission queue</h2>
+                <p class="meta-copy" style="margin-top: 10px;">Use the queue to approve submissions into the catalog or reject low-signal entries.</p>
+                <div id="submissionQueue" class="admin-queue" style="margin-top: 18px;"></div>
+              </div>
+
+              <form id="approvalForm" class="admin-form panel">
+                <h2>Approve submission</h2>
+                <p class="meta-copy">Load a submission from the queue, enrich the listing fields, and approve it into `data/tools.json`.</p>
+                <input type="hidden" name="submissionId">
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="approvalCategoryLabel">Category label</label>
+                    <input id="approvalCategoryLabel" class="field" type="text" name="categoryLabel" placeholder="Assistants">
+                  </div>
+                  <div>
+                    <label for="approvalSubcategory">Subcategory</label>
+                    <input id="approvalSubcategory" class="field" type="text" name="subcategory" placeholder="General-purpose assistant">
+                  </div>
+                </div>
+                <div>
+                  <label for="approvalDescription">Description</label>
+                  <textarea id="approvalDescription" class="textarea" name="description" rows="4"></textarea>
+                </div>
+                <div>
+                  <label for="approvalEditorialNote">Editorial note</label>
+                  <textarea id="approvalEditorialNote" class="textarea" name="editorialNote" rows="3"></textarea>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="approvalPricingLabel">Pricing label</label>
+                    <input id="approvalPricingLabel" class="field" type="text" name="pricingLabel" placeholder="Free / Pro from $20">
+                  </div>
+                  <div>
+                    <label for="approvalReviewUrl">Review URL</label>
+                    <input id="approvalReviewUrl" class="field" type="text" name="reviewUrl" placeholder="/example-review.html">
+                  </div>
+                </div>
+                <div>
+                  <label for="approvalTags">Tags</label>
+                  <input id="approvalTags" class="field" type="text" name="tags" placeholder="research, writing, docs">
+                </div>
+                <div>
+                  <label for="approvalUseCases">Use cases</label>
+                  <input id="approvalUseCases" class="field" type="text" name="useCases" placeholder="knowledge work, drafting">
+                </div>
+                <label>
+                  <input type="checkbox" name="featured">
+                  Mark as featured
+                </label>
+                <button class="button" type="submit">Approve into catalog</button>
+              </form>
+            </div>
+
+            <div class="admin-stack">
+              <form id="toolEditorForm" class="admin-form panel">
+                <div class="section-head" style="margin-bottom: 0;">
+                  <div>
+                    <h2 id="editorMode">Create new tool</h2>
+                    <p class="meta-copy" style="margin-top: 10px;">Use this form to manually create a new listing or edit an existing tool.</p>
+                  </div>
+                  <button id="resetToolEditor" class="button-ghost" type="button">Reset</button>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="toolSlug">Slug</label>
+                    <input id="toolSlug" class="field" type="text" name="slug" placeholder="tool-slug">
+                  </div>
+                  <div>
+                    <label for="toolNameAdmin">Name</label>
+                    <input id="toolNameAdmin" class="field" type="text" name="name" placeholder="Tool name">
+                  </div>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="toolCategoryAdmin">Category</label>
+                    <input id="toolCategoryAdmin" class="field" type="text" name="category" placeholder="assistant">
+                  </div>
+                  <div>
+                    <label for="toolCategoryLabelAdmin">Category label</label>
+                    <input id="toolCategoryLabelAdmin" class="field" type="text" name="categoryLabel" placeholder="Assistants">
+                  </div>
+                </div>
+                <div>
+                  <label for="toolSubcategoryAdmin">Subcategory</label>
+                  <input id="toolSubcategoryAdmin" class="field" type="text" name="subcategory" placeholder="General-purpose assistant">
+                </div>
+                <div>
+                  <label for="toolDescriptionAdmin">Description</label>
+                  <textarea id="toolDescriptionAdmin" class="textarea" name="description" rows="4"></textarea>
+                </div>
+                <div>
+                  <label for="toolEditorialAdmin">Editorial note</label>
+                  <textarea id="toolEditorialAdmin" class="textarea" name="editorialNote" rows="3"></textarea>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="toolPricingModelAdmin">Pricing model</label>
+                    <select id="toolPricingModelAdmin" class="select" name="pricingModel">
+                      <option value="">Choose pricing model</option>
+                      <option value="freemium">Freemium</option>
+                      <option value="paid">Paid</option>
+                      <option value="open-source">Open source</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="toolPricingLabelAdmin">Pricing label</label>
+                    <input id="toolPricingLabelAdmin" class="field" type="text" name="pricingLabel" placeholder="Free / Pro from $20">
+                  </div>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="toolRatingAdmin">Rating</label>
+                    <input id="toolRatingAdmin" class="field" type="number" min="0" max="5" step="0.1" name="rating" value="4.0">
+                  </div>
+                  <div>
+                    <label for="toolTrendingAdmin">Trending score</label>
+                    <input id="toolTrendingAdmin" class="field" type="number" min="0" max="100" step="1" name="trendingScore" value="50">
+                  </div>
+                </div>
+                <div class="admin-form-grid">
+                  <div>
+                    <label for="toolWebsiteAdmin">Website URL</label>
+                    <input id="toolWebsiteAdmin" class="field" type="url" name="websiteUrl" placeholder="https://example.com">
+                  </div>
+                  <div>
+                    <label for="toolReviewAdmin">Review URL</label>
+                    <input id="toolReviewAdmin" class="field" type="text" name="reviewUrl" placeholder="/example-review.html">
+                  </div>
+                </div>
+                <div>
+                  <label for="toolTagsAdmin">Tags</label>
+                  <input id="toolTagsAdmin" class="field" type="text" name="tags" placeholder="research, coding, automation">
+                </div>
+                <div>
+                  <label for="toolUseCasesAdmin">Use cases</label>
+                  <input id="toolUseCasesAdmin" class="field" type="text" name="useCases" placeholder="debugging, drafting, workflow automation">
+                </div>
+                <div class="admin-form-grid">
+                  <label><input type="checkbox" name="verified"> Verified</label>
+                  <label><input type="checkbox" name="featured"> Featured</label>
+                  <label><input type="checkbox" name="sponsored"> Sponsored</label>
+                </div>
+                <button class="button" type="submit">Save tool</button>
+              </form>
+
+              <div class="panel" style="padding: 22px;">
+                <h2>Catalog</h2>
+                <p class="meta-copy" style="margin-top: 10px;">Load a tool into the editor, then update its metadata without touching the JSON file by hand.</p>
+                <div id="toolCatalog" class="admin-queue" style="margin-top: 18px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Admin routes: submissions review, manual create, manual update.</div>
+        <div>Next step after this would be auth and persistence beyond flat files.</div>
+      </div>
+    </footer>
+  </div>
+
+  <div data-global-status class="status section-inner"></div>
+  <script src="/scripts/futurepedia-app.js"></script>
+</body>
+</html>

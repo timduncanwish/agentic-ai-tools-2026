@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your AI Tool | Agentic AI Tools 2026</title>
+  <meta name="description" content="Submit your AI product for editorial review and inclusion in the Agentic AI Tools 2026 directory.">
+  <link rel="canonical" href="https://agentic-ai.tools/submit-tool.html">
+  <link rel="stylesheet" href="/styles/futurepedia-redesign.css">
+</head>
+<body data-page="submit">
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand-lockup" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">Agentic AI Tools 2026</span>
+            <span class="brand-subtitle">Tool submission workflow</span>
+          </span>
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/tools-directory.html">Directory</a>
+          <a href="/admin.html">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero">
+        <div class="section-inner">
+          <div class="hero-panel">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <span class="eyebrow">Supply-side funnel</span>
+                <h1>Submit a tool for editorial review.</h1>
+                <p>
+                  This flow exists because a serious directory needs a repeatable intake mechanism. The backend now stores incoming submissions so listings can evolve without hand-editing HTML every time.
+                </p>
+              </div>
+              <div class="hero-side">
+                <div class="glass-card">
+                  <strong>Best fit</strong>
+                  <p class="meta-copy">Tools with a clear use case, production-ready product surface, and a distinct audience or workflow position.</p>
+                </div>
+                <div class="glass-card">
+                  <strong>What helps</strong>
+                  <p class="meta-copy">A precise category, honest pricing signal, and notes that explain what makes the product worth evaluating.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="submit-grid">
+            <form id="submitToolForm" class="submit-form glass-card">
+              <h2>Tool details</h2>
+
+              <div>
+                <label for="toolName">Tool name</label>
+                <input id="toolName" class="field" type="text" name="name" placeholder="Example: Example AI" required>
+              </div>
+
+              <div>
+                <label for="toolUrl">Website URL</label>
+                <input id="toolUrl" class="field" type="url" name="url" placeholder="https://example.com" required>
+              </div>
+
+              <div>
+                <label for="toolCategory">Category</label>
+                <select id="toolCategory" class="select" name="category" required>
+                  <option value="">Choose a category</option>
+                  <option value="assistant">Assistants</option>
+                  <option value="coding">Coding</option>
+                  <option value="automation">Automation</option>
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                  <option value="audio">Audio</option>
+                  <option value="productivity">Productivity</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="pricingModel">Pricing model</label>
+                <select id="pricingModel" class="select" name="pricingModel">
+                  <option value="">Choose pricing model</option>
+                  <option value="freemium">Freemium</option>
+                  <option value="paid">Paid</option>
+                  <option value="open-source">Open source</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contactEmail">Contact email</label>
+                <input id="contactEmail" class="field" type="email" name="contactEmail" placeholder="name@company.com" required>
+              </div>
+
+              <div>
+                <label for="toolNotes">Notes</label>
+                <textarea id="toolNotes" class="textarea" name="notes" rows="6" placeholder="What makes the product worth listing? Which user is it for?"></textarea>
+              </div>
+
+              <button class="button" type="submit">Submit for review</button>
+              <div id="submitStatus" class="status"></div>
+            </form>
+
+            <aside class="submit-process">
+              <h3>Editorial process</h3>
+              <p>
+                This is a lightweight intake workflow, not an auto-approval funnel. The point is to collect structured candidate listings into backend state.
+              </p>
+
+              <div class="process-list">
+                <div class="process-step">
+                  <span class="step-number">1</span>
+                  <div>
+                    <strong>Structured intake</strong>
+                    <p>Store product, category, pricing, and contact data via the new submissions API.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <span class="step-number">2</span>
+                  <div>
+                    <strong>Editorial review</strong>
+                    <p>Assess clarity of positioning, product maturity, and whether the tool adds signal instead of noise.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <span class="step-number">3</span>
+                  <div>
+                    <strong>Directory inclusion</strong>
+                    <p>Approved tools can be promoted into the catalog data layer and then surfaced in featured or trending sections.</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Submission workflow backed by `POST /api/submissions`.</div>
+        <div>This turns the directory into a maintainable product, not a fixed landing page.</div>
+      </div>
+    </footer>
+  </div>
+
+  <div data-global-status class="status section-inner"></div>
+  <script src="/scripts/futurepedia-app.js"></script>
+</body>
+</html>

@@ -1,318 +1,611 @@
 #!/usr/bin/env node
-/**
- * TrendRush - AI内容生成器
- * 用途: 基于热词快速生成SEO优化内容
- */
 
 const fs = require('fs').promises;
 const path = require('path');
 
-// 配置
 const CONFIG = {
-    outputDir: process.env.OUTPUT_DIR || './generated-content',
-    targetWords: parseInt(process.env.TARGET_WORDS) || 2000,
-    keyword: process.env.KEYWORD || '',
-    tone: process.env.TONE || 'informative',
-    language: process.env.LANGUAGE || 'en'
+  outputDir: process.env.OUTPUT_DIR || './generated-content',
+  targetWords: Number.parseInt(process.env.TARGET_WORDS || '2000', 10),
+  keyword: (process.env.KEYWORD || '').trim(),
+  tone: process.env.TONE || 'informative',
+  language: process.env.LANGUAGE || 'en'
 };
 
-/**
- * 内容生成策略
- */
 const CONTENT_STRATEGIES = {
-    'blog-post': generateBlogPost,
-    'product-review': generateProductReview,
-    'comparison': generateComparison,
-    'tutorial': generateTutorial,
-    'news': generateNewsArticle
+  'blog-post': generateBlogPost,
+  'product-review': generateProductReview,
+  comparison: generateComparison,
+  tutorial: generateTutorial,
+  news: generateNewsArticle
 };
 
-/**
- * 生成博客文章
- */
-async function generateBlogPost(keyword) {
-    const structure = {
-        title: `The Ultimate Guide to ${keyword}: Everything You Need to Know in 2024`,
-        sections: [
-            { type: 'h1', content: `${keyword}: Complete Guide` },
-            { type: 'intro', content: generateIntro(keyword) },
-            { type: 'h2', content: `What is ${keyword}?` },
-            { type: 'definition', content: generateDefinition(keyword) },
-            { type: 'h2', content: `Top 10 Benefits of ${keyword}` },
-            { type: 'list', content: generateBenefits(keyword, 10) },
-            { type: 'h2', content: `How to Choose the Right ${keyword}` },
-            { type: 'guide', content: generateGuide(keyword) },
-            { type: 'h2', content: `${keyword} Reviews: Top Picks` },
-            { type: 'reviews', content: generateReviews(keyword, 5) },
-            { type: 'h2', content: `FAQ: Common Questions About ${keyword}` },
-            { type: 'faq', content: generateFAQ(keyword, 5) },
-            { type: 'conclusion', content: generateConclusion(keyword) }
-        ]
-    };
-
-    return renderHTML(structure, keyword);
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-/**
- * 生成产品评测
- */
-async function generateProductReview(keyword) {
-    const structure = {
-        title: `${keyword} Review 2024: Is It Worth Your Money?`,
-        sections: [
-            { type: 'h1', content: `${keyword} - Complete Review` },
-            { type: 'rating-box', content: generateRatingBox() },
-            { type: 'intro', content: generateReviewIntro(keyword) },
-            { type: 'h2', content: `Key Features` },
-            { type: 'features', content: generateFeatures(keyword) },
-            { type: 'h2', content: `Pros and Cons` },
-            { type: 'pros-cons', content: generateProsCons(keyword) },
-            { type: 'h2', content: `Pricing` },
-            { type: 'pricing', content: generatePricing(keyword) },
-            { type: 'h2', content: `Our Verdict` },
-            { type: 'verdict', content: generateVerdict(keyword) },
-            { type: 'h2', content: `Alternatives to ${keyword}` },
-            { type: 'alternatives', content: generateAlternatives(keyword, 3) },
-            { type: 'cta', content: generateCTA(keyword) }
-        ]
-    };
-
-    return renderHTML(structure, keyword);
+function titleCase(value) {
+  return value
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
-/**
- * HTML渲染器
- */
-function renderHTML(structure, keyword) {
-    let html = `<!DOCTYPE html>
-<html lang="en">
+function slugify(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function buildLayout({ title, description, keyword, body, metadata }) {
+  const safeTitle = escapeHtml(title);
+  const safeDescription = escapeHtml(description);
+  const safeKeyword = escapeHtml(keyword);
+  const jsonLd = JSON.stringify(metadata, null, 2);
+
+  return `<!DOCTYPE html>
+<html lang="${escapeHtml(CONFIG.language)}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${structure.title}</title>
-    <meta name="description" content="Discover ${keyword}: Complete guide, reviews, and tips.">
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${safeTitle}</title>
+  <meta name="description" content="${safeDescription}">
+  <meta name="keywords" content="${safeKeyword}, ${safeKeyword} guide, ${safeKeyword} review">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f1ea;
+      --surface: #fffdf8;
+      --surface-alt: #f0ebe2;
+      --text: #18212f;
+      --muted: #5b6470;
+      --primary: #0e6b5c;
+      --accent: #d97a2b;
+      --border: #ddd2c4;
+      --shadow: 0 20px 50px rgba(24, 33, 47, 0.08);
+      --radius: 22px;
+      --font-display: "Georgia", "Times New Roman", serif;
+      --font-body: "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at top left, rgba(217, 122, 43, 0.16), transparent 30%),
+        linear-gradient(180deg, #faf6ef 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    .hero,
+    .section,
+    .faq,
+    .cta {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 40px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(14, 107, 92, 0.22), transparent 70%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+
+    h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); margin-top: 18px; }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+    h3 { font-size: 1.25rem; }
+
+    p { margin: 0 0 18px; color: var(--muted); }
+
+    .lead {
+      font-size: 1.1rem;
+      max-width: 62ch;
+    }
+
+    .meta-grid,
+    .cards,
+    .pros-cons,
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .meta-grid,
+    .pros-cons {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .cards,
+    .steps {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .metric,
+    .card,
+    .panel,
+    .step {
+      border-radius: 18px;
+      background: var(--surface-alt);
+      padding: 20px;
+      border: 1px solid rgba(24, 33, 47, 0.06);
+    }
+
+    .metric strong,
+    .card strong,
+    .step strong,
+    .panel strong {
+      color: var(--text);
+    }
+
+    .section,
+    .faq,
+    .cta {
+      padding: 32px;
+      margin-top: 22px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    li + li { margin-top: 10px; }
+
+    .cta {
+      background: linear-gradient(135deg, #0e6b5c, #16404d);
+      color: #f7f3eb;
+    }
+
+    .cta p,
+    .cta li { color: rgba(247, 243, 235, 0.88); }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #f7f3eb;
+      color: #16404d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px 14px 40px; }
+      .hero,
+      .section,
+      .faq,
+      .cta { padding: 22px; }
+    }
+  </style>
+  <script type="application/ld+json">
+${jsonLd}
+  </script>
 </head>
-<body class="bg-gray-50">
-    <article class="max-w-4xl mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-8">${structure.title}</h1>
-`;
-
-    structure.sections.forEach(section => {
-        html += renderSection(section, keyword);
-    });
-
-    html += `
-    </article>
-
-    <!-- 变现元素 -->
-    <div class="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-        <h3 class="text-xl font-semibold mb-4">Recommended Products</h3>
-        <div id="amazon-products"></div>
-    </div>
-
-    <!-- 邮件订阅 -->
-    <div class="mt-8 p-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg">
-        <h3 class="text-xl font-semibold mb-2">Stay Updated</h3>
-        <p class="mb-4">Get the latest tips and deals delivered to your inbox.</p>
-        <form class="flex gap-2">
-            <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded text-gray-900">
-            <button class="px-6 py-2 bg-white text-purple-600 font-semibold rounded hover:bg-gray-100">
-                Subscribe
-            </button>
-        </form>
-    </div>
-
-    <script>
-        // 动态加载 Amazon 产品
-        fetch('/api/products?keyword=${encodeURIComponent(keyword)}')
-            .then(res => res.json())
-            .then(products => {
-                document.getElementById('amazon-products').innerHTML = products.map(p => `
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="${p.image}" alt="${p.title}" class="w-20 h-20 object-cover rounded">
-                        <div class="flex-1">
-                            <h4 class="font-semibold">${p.title}</h4>
-                            <div class="flex items-center gap-2">
-                                <span class="text-yellow-500">${'★'.repeat(Math.floor(p.rating))}</span>
-                                <span class="text-gray-600">(${p.reviews})</span>
-                            </div>
-                            <p class="text-lg font-bold text-green-600">$${p.price}</p>
-                        </div>
-                        <a href="${p affiliate}" target="_blank" class="px-4 py-2 bg-yellow-400 text-gray-900 font-semibold rounded hover:bg-yellow-500">
-                            View on Amazon
-                        </a>
-                    </div>
-                `).join('');
-            });
-    </script>
+<body>
+  <main class="page">
+    ${body}
+  </main>
 </body>
 </html>`;
-
-    return html;
 }
 
-function renderSection(section, keyword) {
-    const sectionMap = {
-        'h1': (s) => `<h1 class="text-4xl font-bold text-gray-900 mb-6">${s.content}</h1>`,
-        'h2': (s) => `<h2 class="text-3xl font-bold text-gray-800 mt-12 mb-6">${s.content}</h2>`,
-        'intro': (s) => `<p class="text-xl text-gray-700 leading-relaxed mb-6">${s.content}</p>`,
-        'list': (s) => `<ul class="list-disc list-inside space-y-3 mb-8">${s.content.map(item => `<li class="text-gray-700">${item}</li>`).join('')}</ul>`,
-        'pros-cons': (s) => renderProsCons(s.content),
-        'rating-box': (s) => `<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">${s.content}</div>`,
-        'cta': (s) => `<div class="mt-12 p-8 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg text-center">${s.content}</div>`
-    };
-
-    return sectionMap[section.type]?.(section) || `<div>${section.content}</div>`;
+function renderCardGrid(items) {
+  return `<div class="cards">${items
+    .map(
+      (item) => `<article class="card">
+  <h3>${escapeHtml(item.title)}</h3>
+  <p>${escapeHtml(item.body)}</p>
+</article>`
+    )
+    .join('')}</div>`;
 }
 
-// 内容生成辅助函数
+function renderList(items) {
+  return `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+}
+
+function renderFaq(items) {
+  return `<section class="faq">
+  <h2>Frequently asked questions</h2>
+  ${items
+    .map(
+      (item) => `<div class="faq-item">
+    <h3>${escapeHtml(item.question)}</h3>
+    <p>${escapeHtml(item.answer)}</p>
+  </div>`
+    )
+    .join('')}
+</section>`;
+}
+
 function generateIntro(keyword) {
-    return `Are you looking for information about ${keyword}? You're in the right place. In this comprehensive guide, we'll cover everything you need to know about ${keyword}, from the basics to advanced tips and tricks.`;
+  return `If you are researching ${keyword}, this guide gives you a practical overview, the main tradeoffs, and the fastest way to act on the topic without wasting time on generic advice.`;
+}
+
+function generateDefinition(keyword) {
+  return `${titleCase(keyword)} usually refers to the tools, workflows, and decisions people compare when they want a reliable way to evaluate the space and choose what to use next.`;
 }
 
 function generateBenefits(keyword, count) {
-    return Array.from({length: count}, (_, i) => `Benefit ${i + 1}: How ${keyword} helps you achieve your goals`);
+  return Array.from({ length: count }, (_, index) => {
+    const number = index + 1;
+    return `${number}. ${titleCase(keyword)} can improve speed, reduce manual work, and make decision-making more consistent when you define clear selection criteria.`;
+  });
+}
+
+function generateGuide(keyword) {
+  return [
+    `Define the main outcome you want from ${keyword} before comparing vendors or tutorials.`,
+    `Shortlist options based on pricing, integrations, and maintenance overhead instead of feature count alone.`,
+    `Test a realistic workflow, capture blockers, and choose the option that reduces ongoing operational cost.`
+  ];
 }
 
 function generateReviews(keyword, count) {
-    return Array.from({length: count}, (_, i) => ({
-        title: `Product ${i + 1}`,
-        rating: 4 + Math.random(),
-        description: `Great ${keyword} option`
-    }));
-}
-
-function generateProsCons(keyword) {
-    return {
-        pros: ['Benefit 1', 'Benefit 2', 'Benefit 3'],
-        cons: ['Drawback 1', 'Drawback 2']
-    };
-}
-
-function renderProsCons(data) {
-    return `
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-green-50 p-6 rounded-lg">
-                <h3 class="text-lg font-semibold text-green-800 mb-4">✓ Pros</h3>
-                <ul class="space-y-2">
-                    ${data.pros.map(p => `<li class="text-green-700">${p}</li>`).join('')}
-                </ul>
-            </div>
-            <div class="bg-red-50 p-6 rounded-lg">
-                <h3 class="text-lg font-semibold text-red-800 mb-4">✗ Cons</h3>
-                <ul class="space-y-2">
-                    ${data.cons.map(c => `<li class="text-red-700">${c}</li>`).join('')}
-                </ul>
-            </div>
-        </div>
-    `;
-}
-
-function generateRatingBox() {
-    return `
-        <div class="flex items-center justify-between">
-            <div>
-                <div class="text-5xl font-bold text-gray-900">4.5</div>
-                <div class="text-yellow-500 text-2xl">★★★★★</div>
-                <div class="text-gray-600">Based on 1,234 reviews</div>
-            </div>
-            <div class="text-right">
-                <div class="text-sm text-gray-600">Our Verdict</div>
-                <div class="text-xl font-bold text-green-600">Excellent Choice</div>
-            </div>
-        </div>
-    `;
+  return Array.from({ length: count }, (_, index) => ({
+    title: `${titleCase(keyword)} option ${index + 1}`,
+    body: `A strong choice when you need predictable setup, clear documentation, and room to scale without changing tools too quickly.`
+  }));
 }
 
 function generateFAQ(keyword, count) {
-    return Array.from({length: count}, (_, i) => ({
-        q: `Question ${i + 1} about ${keyword}?`,
-        a: `Detailed answer to help users understand ${keyword} better.`
-    }));
+  return Array.from({ length: count }, (_, index) => ({
+    question: `What should I check before choosing ${keyword}?`,
+    answer:
+      index === 0
+        ? `Start with fit, implementation cost, and how quickly your team can get value from ${keyword} in production.`
+        : `Compare the learning curve, recurring cost, and whether ${keyword} solves the exact problem you have today.`
+  }));
+}
+
+function generateConclusion(keyword) {
+  return `The best ${keyword} decision is usually the one that solves a narrow problem well, can be validated quickly, and does not create unnecessary operational complexity later.`;
+}
+
+function generateFeatures(keyword) {
+  return [
+    `${titleCase(keyword)} setup workflow with clear onboarding`,
+    `Automation hooks that reduce repetitive manual work`,
+    `Reporting and visibility so results can be measured`
+  ];
+}
+
+function generatePricing(keyword) {
+  return `${titleCase(keyword)} pricing typically ranges from entry-level plans for experimentation to enterprise contracts that add security, governance, and support.`;
+}
+
+function generateVerdict(keyword) {
+  return `Treat ${keyword} as a practical business tool, not a novelty. If the workflow is clear and the economics work, it is worth piloting.`;
+}
+
+function generateAlternatives(keyword, count) {
+  return Array.from({ length: count }, (_, index) => ({
+    title: `Alternative ${index + 1}`,
+    body: `Useful if you need a different pricing model, deeper customization, or a lighter implementation footprint than the default ${keyword} option.`
+  }));
 }
 
 function generateCTA(keyword) {
-    return `
-        <h3 class="text-2xl font-bold mb-4">Ready to Get Started with ${keyword}?</h3>
-        <p class="mb-6">Join thousands of satisfied users who have already discovered the benefits of ${keyword}.</p>
-        <a href="#" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold text-lg rounded-lg hover:bg-gray-100">
-            Get Started Now →
-        </a>
-    `;
+  const href = `https://www.google.com/search?q=${encodeURIComponent(keyword)}`;
+  return `<section class="cta">
+  <h2>Ready to evaluate ${escapeHtml(keyword)}?</h2>
+  <p>Use this page as a checklist, test one real workflow, and document the outcome before committing to a larger rollout.</p>
+  <a href="${href}" target="_blank" rel="noreferrer">Research ${escapeHtml(keyword)}</a>
+</section>`;
 }
 
-// 其他生成函数...
-function generateDefinition(keyword) { return `${keyword} is...`; }
-function generateGuide(keyword) { return `Step-by-step guide...`; }
-function generateReviewIntro(keyword) { return `Our expert review...`; }
-function generateFeatures(keyword) { return ['Feature 1', 'Feature 2', 'Feature 3']; }
-function generatePricing(keyword) { return '$9.99/month'; }
-function generateVerdict(keyword) { return 'Highly recommended'; }
-function generateAlternatives(keyword, count) { return []; }
-function generateConclusion(keyword) { return `Final thoughts...`; }
+function renderProsCons(data) {
+  return `<div class="pros-cons">
+  <div class="panel">
+    <h3>Pros</h3>
+    ${renderList(data.pros)}
+  </div>
+  <div class="panel">
+    <h3>Cons</h3>
+    ${renderList(data.cons)}
+  </div>
+</div>`;
+}
 
-/**
- * 主执行函数
- */
+async function generateBlogPost(keyword) {
+  const title = `The Ultimate Guide to ${titleCase(keyword)}`;
+  const description = `A practical guide to ${keyword}, including benefits, evaluation criteria, and next steps.`;
+  const benefits = generateBenefits(keyword, 6);
+  const guideSteps = generateGuide(keyword);
+  const reviewCards = generateReviews(keyword, 3);
+  const faqs = generateFAQ(keyword, 4);
+
+  const body = `<section class="hero">
+  <span class="eyebrow">Guide</span>
+  <h1>${escapeHtml(title)}</h1>
+  <p class="lead">${escapeHtml(generateIntro(keyword))}</p>
+  <div class="meta-grid">
+    <div class="metric"><strong>Intent</strong><p>Commercial research</p></div>
+    <div class="metric"><strong>Best for</strong><p>Readers comparing tools and execution paths</p></div>
+    <div class="metric"><strong>Read time</strong><p>${Math.max(8, Math.round(CONFIG.targetWords / 220))} minutes</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What is ${escapeHtml(titleCase(keyword))}?</h2>
+  <p>${escapeHtml(generateDefinition(keyword))}</p>
+</section>
+
+<section class="section">
+  <h2>Why people care about ${escapeHtml(titleCase(keyword))}</h2>
+  ${renderList(benefits)}
+</section>
+
+<section class="section">
+  <h2>How to evaluate it</h2>
+  <div class="steps">${guideSteps
+    .map(
+      (step, index) => `<div class="step">
+    <strong>Step ${index + 1}</strong>
+    <p>${escapeHtml(step)}</p>
+  </div>`
+    )
+    .join('')}</div>
+</section>
+
+<section class="section">
+  <h2>Popular approaches</h2>
+  ${renderCardGrid(reviewCards)}
+</section>
+
+${renderFaq(faqs)}
+${generateCTA(keyword)}`;
+
+  return buildLayout({
+    title,
+    description,
+    keyword,
+    body,
+    metadata: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description,
+      keywords: [keyword, `${keyword} guide`, `${keyword} review`]
+    }
+  });
+}
+
+async function generateProductReview(keyword) {
+  const title = `${titleCase(keyword)} Review`;
+  const description = `An opinionated review of ${keyword}, covering features, pros and cons, pricing, and alternatives.`;
+  const body = `<section class="hero">
+  <span class="eyebrow">Review</span>
+  <h1>${escapeHtml(title)}</h1>
+  <p class="lead">${escapeHtml(
+    `This review focuses on practical value: what ${keyword} does well, where it falls short, and how to decide whether it fits your workflow.`
+  )}</p>
+  <div class="meta-grid">
+    <div class="metric"><strong>Overall</strong><p>4.4 / 5</p></div>
+    <div class="metric"><strong>Fit</strong><p>Best when speed matters more than extreme customization</p></div>
+    <div class="metric"><strong>Risk</strong><p>Review integrations and long-term cost before scaling</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Key features</h2>
+  ${renderList(generateFeatures(keyword))}
+</section>
+
+<section class="section">
+  <h2>Pros and cons</h2>
+  ${renderProsCons({
+    pros: [
+      `Fast path to initial value for ${keyword}`,
+      'Lower effort to validate than building from scratch',
+      'Useful for teams that need a documented process'
+    ],
+    cons: [
+      'Recurring cost may rise with adoption',
+      'Fit depends on integration depth and data quality',
+      'Some teams may need more control than the default setup allows'
+    ]
+  })}
+</section>
+
+<section class="section">
+  <h2>Pricing</h2>
+  <p>${escapeHtml(generatePricing(keyword))}</p>
+</section>
+
+<section class="section">
+  <h2>Verdict</h2>
+  <p>${escapeHtml(generateVerdict(keyword))}</p>
+</section>
+
+<section class="section">
+  <h2>Alternatives</h2>
+  ${renderCardGrid(generateAlternatives(keyword, 3))}
+</section>
+
+${renderFaq(generateFAQ(keyword, 3))}
+${generateCTA(keyword)}`;
+
+  return buildLayout({
+    title,
+    description,
+    keyword,
+    body,
+    metadata: {
+      '@context': 'https://schema.org',
+      '@type': 'Review',
+      itemReviewed: {
+        '@type': 'Thing',
+        name: titleCase(keyword)
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '4.4',
+        bestRating: '5'
+      },
+      name: title,
+      description
+    }
+  });
+}
+
+async function generateComparison(keyword) {
+  return buildLayout({
+    title: `${titleCase(keyword)} Comparison`,
+    description: `A comparison template for ${keyword}.`,
+    keyword,
+    body: `<section class="hero">
+  <span class="eyebrow">Comparison</span>
+  <h1>${escapeHtml(titleCase(keyword))} Comparison</h1>
+  <p class="lead">Use this template to compare leading options by fit, cost, and operational complexity.</p>
+</section>`,
+    metadata: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: `${titleCase(keyword)} Comparison`
+    }
+  });
+}
+
+async function generateTutorial(keyword) {
+  return buildLayout({
+    title: `${titleCase(keyword)} Tutorial`,
+    description: `A tutorial template for ${keyword}.`,
+    keyword,
+    body: `<section class="hero">
+  <span class="eyebrow">Tutorial</span>
+  <h1>${escapeHtml(titleCase(keyword))} Tutorial</h1>
+  <p class="lead">Follow a real workflow from setup to validation so you can confirm ${escapeHtml(keyword)} works in practice.</p>
+</section>`,
+    metadata: {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: `${titleCase(keyword)} Tutorial`
+    }
+  });
+}
+
+async function generateNewsArticle(keyword) {
+  return buildLayout({
+    title: `${titleCase(keyword)} News`,
+    description: `A news template for ${keyword}.`,
+    keyword,
+    body: `<section class="hero">
+  <span class="eyebrow">News</span>
+  <h1>${escapeHtml(titleCase(keyword))} News Roundup</h1>
+  <p class="lead">Summarize the latest developments, what changed, and why it matters to buyers and builders.</p>
+</section>`,
+    metadata: {
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: `${titleCase(keyword)} News`
+    }
+  });
+}
+
 async function main() {
-    const keyword = CONFIG.keyword;
+  const keyword = CONFIG.keyword;
 
-    if (!keyword) {
-        console.error('❌ 请提供 KEYWORD 环境变量');
-        console.log('用法: KEYWORD="your-keyword" node content-generator.js');
-        process.exit(1);
-    }
+  if (!keyword) {
+    console.error('KEYWORD environment variable is required.');
+    console.error('Example: KEYWORD="ai agent builder" npm run generate');
+    process.exit(1);
+  }
 
-    console.log(`🚀 TrendRush 内容生成器`);
-    console.log(`关键词: ${keyword}`);
-    console.log(`目标字数: ${CONFIG.targetWords}`);
-    console.log('');
+  await fs.mkdir(CONFIG.outputDir, { recursive: true });
 
-    // 创建输出目录
-    await fs.mkdir(CONFIG.outputDir, { recursive: true });
+  const types = ['blog-post', 'product-review'];
+  const files = [];
 
-    // 生成不同类型的内容
-    const types = ['blog-post', 'product-review'];
-    const generated = [];
+  for (const type of types) {
+    const content = await CONTENT_STRATEGIES[type](keyword);
+    const filename = `${slugify(keyword)}-${type}.html`;
+    const filepath = path.join(CONFIG.outputDir, filename);
 
-    for (const type of types) {
-        console.log(`📝 生成 ${type}...`);
-        const content = await CONTENT_STRATEGIES[type](keyword);
-        const filename = `${type}.html`;
-        const filepath = path.join(CONFIG.outputDir, filename);
+    await fs.writeFile(filepath, content, 'utf8');
+    files.push(filepath);
+    console.log(`Generated ${filepath}`);
+  }
 
-        await fs.writeFile(filepath, content);
-        generated.push(filepath);
-        console.log(`✅ 已保存: ${filepath}`);
-    }
+  const metadata = {
+    keyword,
+    tone: CONFIG.tone,
+    language: CONFIG.language,
+    targetWords: CONFIG.targetWords,
+    generatedAt: new Date().toISOString(),
+    files
+  };
 
-    // 生成元数据
-    const metadata = {
-        keyword,
-        generatedAt: new Date().toISOString(),
-        files: generated,
-        seo: {
-            title: `${keyword} - Complete Guide 2024`,
-            description: `Discover ${keyword}: Comprehensive reviews, guides, and tips.`,
-            keywords: [keyword, `${keyword} reviews`, `best ${keyword}`, `${keyword} guide`]
-        }
-    };
+  const metadataPath = path.join(CONFIG.outputDir, `${slugify(keyword)}-metadata.json`);
+  await fs.writeFile(metadataPath, JSON.stringify(metadata, null, 2), 'utf8');
 
-    await fs.writeFile(
-        path.join(CONFIG.outputDir, 'metadata.json'),
-        JSON.stringify(metadata, null, 2)
-    );
-
-    console.log('');
-    console.log('✅ 内容生成完成!');
-    console.log(`📂 输出目录: ${CONFIG.outputDir}`);
-    console.log(`📄 生成文件: ${generated.length} 个`);
+  console.log(`Generated metadata ${metadataPath}`);
 }
 
-// 运行
 if (require.main === module) {
-    main().catch(console.error);
+  main().catch((error) => {
+    console.error(error.message || error);
+    process.exit(1);
+  });
 }
 
-module.exports = { generateBlogPost, generateProductReview };
+module.exports = {
+  generateBlogPost,
+  generateProductReview,
+  generateComparison,
+  generateTutorial,
+  generateNewsArticle
+};

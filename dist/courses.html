@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Courses | Learn Practical AI Workflows</title>
+  <meta name="description" content="Discover practical AI courses across assistants, coding agents, automation, image, and creator workflows.">
+  <link rel="stylesheet" href="/styles/futurepedia-redesign.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand-lockup" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">Agentic AI Tools 2026</span>
+            <span class="brand-subtitle">Courses and practical learning tracks</span>
+          </span>
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/tools-directory.html">AI Tools</a>
+          <a href="/creators.html">Creators</a>
+          <a href="/submit-tool.html">Submit tool</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero" style="padding-bottom: 8px;">
+        <div class="section-inner">
+          <div class="hero-panel">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <span class="eyebrow">AI Courses</span>
+                <h1>Move from curiosity to practical execution.</h1>
+                <p>
+                  Browse compact learning paths for assistants, coding agents, workflow automation,
+                  creator production, and research systems.
+                </p>
+              </div>
+              <div class="hero-side">
+                <div class="glass-card">
+                  <strong>Why courses</strong>
+                  <p class="meta-copy">Tools help you choose software. Courses help your team actually use it well.</p>
+                </div>
+                <div class="glass-card">
+                  <strong>Focus</strong>
+                  <p class="meta-copy">Search by workflow, narrow by level, and sort by popularity or freshness.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="discovery-shell">
+            <aside class="filters-panel panel">
+              <h3>Filter courses</h3>
+              <div class="filter-group">
+                <label for="courseSearch">Search</label>
+                <input id="courseSearch" class="field" type="text" placeholder="Course, provider, or topic">
+              </div>
+              <div class="filter-group">
+                <label>Categories</label>
+                <div id="courseCategoryFilters" class="filter-pills"></div>
+              </div>
+              <div class="filter-group">
+                <label for="courseLevel">Level</label>
+                <select id="courseLevel" class="select">
+                  <option value="all">All levels</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="courseSort">Sort</label>
+                <select id="courseSort" class="select">
+                  <option value="popular">Most popular</option>
+                  <option value="newest">Newest</option>
+                  <option value="alphabetical">Alphabetical</option>
+                </select>
+              </div>
+            </aside>
+
+            <section class="results-panel">
+              <div class="results-stack">
+                <div class="results-toolbar panel catalog-toolbar">
+                  <div>
+                    <h3>Browse courses</h3>
+                    <div id="courseResultsCount" class="meta-copy">0 courses</div>
+                  </div>
+                </div>
+                <div id="courseSpotlight"></div>
+                <div id="courseEmptyState" class="empty-state hidden">
+                  <h3>No courses match the current filters</h3>
+                  <p class="empty-copy">Try a broader query, change the level, or switch categories.</p>
+                </div>
+                <div id="coursesGrid" class="catalog-grid"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Course discovery is now a first-class surface.</div>
+        <div>Phase 2 adds richer filtering and category linkage.</div>
+      </div>
+    </footer>
+  </div>
+
+  <div data-global-status class="status section-inner"></div>
+  <script type="module" src="/scripts/courses-page.js"></script>
+</body>
+</html>

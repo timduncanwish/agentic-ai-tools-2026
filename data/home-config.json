@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "eyebrow": "Curated AI discovery",
+    "title": "Everything your team needs to discover, compare, and learn AI tools in one place.",
+    "description": "Browse operator-grade AI tools, jump into practical courses, and follow creators who actually use these products in the wild.",
+    "primaryCta": {
+      "label": "Explore AI Tools",
+      "href": "/tools-directory.html"
+    },
+    "secondaryCta": {
+      "label": "Explore Courses",
+      "href": "/courses.html"
+    }
+  },
+  "trustStrip": [
+    "Trusted by builders, operators, and creators evaluating modern AI stacks.",
+    "Updated editorial shortlist every week.",
+    "Tool, course, and creator discovery from one homepage."
+  ],
+  "feedTabs": [
+    {
+      "key": "popular-tools",
+      "label": "Popular Tools",
+      "type": "tools"
+    },
+    {
+      "key": "recent-tools",
+      "label": "Recently Added",
+      "type": "tools"
+    },
+    {
+      "key": "popular-courses",
+      "label": "Popular Courses",
+      "type": "courses"
+    }
+  ],
+  "creatorSpotlightSlug": "kevin-hutson"
+}

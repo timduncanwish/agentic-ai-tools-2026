@@ -21,10 +21,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generative Art Viewer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* Local Fonts - Removed Google Fonts dependency for better AdSense compliance */
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/poppins.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Lora';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/lora.woff2') format('woff2');
+        }
         /* Anthropic Brand Colors */
         :root {
             --anthropic-dark: #141413;

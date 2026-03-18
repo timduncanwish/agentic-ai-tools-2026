@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "start:static": "python start-server.py",
+    "start:legacy-static": "python start-server.py --static-only",
     "monitor": "node scripts/trend-monitor.js",
     "generate": "node scripts/content-generator.js",
     "deploy": "node scripts/deploy.js",

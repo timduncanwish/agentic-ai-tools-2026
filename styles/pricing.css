@@ -1,0 +1,467 @@
+/**
+ * PRICING PAGE STYLES
+ * Agentic AI Tools 2026
+ *
+ * Quantum Terminal inspired pricing page design
+ */
+
+/* ===== PRICING HERO SECTION ===== */
+
+.pricing-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: radial-gradient(ellipse at center, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+}
+
+.pricing-hero-content {
+    max-width: 800px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.pricing-hero-title {
+    font-family: var(--font-quantum);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--quantum-cyan);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+}
+
+.pricing-hero-subtitle {
+    font-family: var(--font-precision);
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--quantum-violet);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.pricing-hero-description {
+    font-family: var(--font-precision);
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== PRICING SECTION ===== */
+
+.pricing-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    align-items: stretch;
+    margin-top: 3rem;
+}
+
+/* ===== PRICING CARDS ===== */
+
+.pricing-card {
+    background: rgba(18, 18, 26, 0.9);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(10px);
+    transition: all var(--flux-transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-violet));
+    opacity: 0;
+    transition: opacity var(--flux-transition);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 245, 255, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 245, 255, 0.2);
+}
+
+.pricing-card:hover::before {
+    opacity: 1;
+}
+
+/* Featured Card */
+.pricing-card-featured {
+    border-color: var(--quantum-violet);
+    background: rgba(18, 18, 26, 0.95);
+}
+
+.pricing-card-featured::before {
+    opacity: 1;
+    background: linear-gradient(90deg, var(--quantum-violet), var(--quantum-magenta));
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--quantum-violet), var(--quantum-magenta));
+    color: var(--void-black);
+    padding: 0.4rem 1.2rem;
+    border-radius: 0 0 8px 8px;
+    font-family: var(--font-quantum);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Card Header */
+.pricing-card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+}
+
+.pricing-plan-name {
+    font-family: var(--font-quantum);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--quantum-cyan);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pricing-card-featured .pricing-plan-name {
+    color: var(--quantum-violet);
+}
+
+.pricing-plan-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.pricing-currency {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--quantum-cyan);
+}
+
+.pricing-amount {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.pricing-period {
+    font-size: 1.1rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+
+.pricing-plan-description {
+    font-size: 1rem;
+    color: #b0b0b0;
+}
+
+/* Features List */
+.pricing-card-features {
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+
+.pricing-feature-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pricing-feature-item:last-child {
+    border-bottom: none;
+}
+
+.pricing-feature-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+}
+
+.pricing-feature-included .pricing-feature-icon {
+    color: var(--quantum-emerald);
+}
+
+.pricing-feature-excluded .pricing-feature-icon {
+    color: #666;
+}
+
+.pricing-feature-text {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.pricing-feature-text strong {
+    color: #e0e0e0;
+}
+
+.pricing-feature-excluded .pricing-feature-text {
+    color: #666;
+}
+
+/* Card Footer */
+.pricing-card-footer {
+    margin-top: auto;
+}
+
+.paypal-button-container {
+    min-height: 50px;
+    margin-bottom: 1rem;
+}
+
+.pricing-cancel-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.8rem;
+}
+
+/* ===== PRICING FAQ ===== */
+
+.pricing-faq {
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-faq-title {
+    font-family: var(--font-quantum);
+    font-size: 2.5rem;
+    color: var(--quantum-cyan);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.pricing-faq-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.pricing-faq-item {
+    background: rgba(18, 18, 26, 0.8);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    backdrop-filter: blur(10px);
+    transition: all var(--flux-transition);
+}
+
+.pricing-faq-item:hover {
+    border-color: rgba(0, 245, 255, 0.3);
+    transform: translateX(8px);
+}
+
+.pricing-faq-question {
+    font-family: var(--font-quantum);
+    font-size: 1.1rem;
+    color: var(--quantum-cyan);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.pricing-faq-answer {
+    color: #a0a0a0;
+    line-height: 1.7;
+}
+
+/* ===== PRICING CTA ===== */
+
+.pricing-cta {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+}
+
+.pricing-cta-title {
+    font-family: var(--font-quantum);
+    font-size: 2rem;
+    color: var(--quantum-violet);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.pricing-cta-text {
+    color: #b0b0b0;
+    margin-bottom: 2rem;
+}
+
+/* ===== PAYPAL MESSAGES ===== */
+
+.paypal-message {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+.paypal-message-error {
+    background: rgba(255, 0, 110, 0.1);
+    border: 1px solid var(--quantum-magenta);
+    color: var(--quantum-magenta);
+}
+
+.paypal-message-info {
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid var(--quantum-cyan);
+    color: var(--quantum-cyan);
+}
+
+/* ===== FALLBACK BUTTON ===== */
+
+.paypal-fallback-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.paypal-fallback-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 0.8rem;
+}
+
+/* ===== NAVIGATION ACTIVE STATE ===== */
+
+.quantum-nav-link-active {
+    color: var(--quantum-cyan) !important;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .pricing-hero {
+        padding: 3rem 1.5rem;
+        min-height: 40vh;
+    }
+
+    .pricing-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .pricing-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .pricing-amount {
+        font-size: 3rem;
+    }
+
+    .pricing-faq {
+        padding: 4rem 1.5rem;
+    }
+
+    .pricing-faq-title {
+        font-size: 1.8rem;
+    }
+
+    .pricing-faq-item {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .pricing-cta {
+        padding: 4rem 1.5rem;
+    }
+
+    .pricing-cta-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-hero-title {
+        font-size: 2rem;
+    }
+
+    .pricing-hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .pricing-hero-description {
+        font-size: 1rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .pricing-plan-name {
+        font-size: 1.2rem;
+    }
+
+    .pricing-amount {
+        font-size: 2.5rem;
+    }
+
+    .pricing-feature-item {
+        font-size: 0.9rem;
+    }
+}

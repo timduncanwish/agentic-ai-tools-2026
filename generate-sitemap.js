@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DOMAIN = 'https://agenticaitools2026.com';
+const DOMAIN = 'https://agentic-ai.tools';
 const DIST_DIR = path.join(__dirname, 'dist');
 const TODAY = new Date().toISOString().split('T')[0]; // Format: 2026-01-24
 

@@ -1,5 +1,5 @@
 # robots.txt for Agentic AI Tools 2026
-# Last updated: 2026-01-24
+# Last updated: 2026-03-17
 
 User-agent: *
 Allow: /
@@ -10,4 +10,4 @@ Disallow: /scripts/
 Disallow: /.git/
 
 # Sitemap location
-Sitemap: https://agenticaitools2026.com/sitemap.xml
+Sitemap: https://agentic-ai.tools/sitemap.xml

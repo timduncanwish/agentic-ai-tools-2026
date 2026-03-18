@@ -148,8 +148,8 @@ dist/
 ## Contact
 
 For questions or support:
-- Website: https://agenticaitools2026.com
-- Email: contact@agenticaitools2026.com
+- Website: https://agentic-ai.tools
+- Email: contact@agentic-ai.tools
 
 ---
 

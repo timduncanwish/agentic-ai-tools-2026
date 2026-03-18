@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "kevin-hutson",
+    "name": "Kevin Hutson",
+    "roleLabel": "AI Music and Video Operator",
+    "bio": "Practical breakdowns of creator workflows using voice, video, and production tools without bloated stacks.",
+    "categoryFocus": ["video", "audio", "image"],
+    "avatarUrl": "",
+    "channelUrl": "https://example.com/creators/kevin-hutson",
+    "platform": "YouTube",
+    "subscriberCount": 665000,
+    "monthlyViews": 38000000,
+    "courseCount": 12,
+    "featuredVideos": [
+      {
+        "title": "Build an AI video pipeline in one afternoon",
+        "url": "https://example.com/videos/kevin-ai-video-pipeline"
+      },
+      {
+        "title": "The creator stack I would actually pay for",
+        "url": "https://example.com/videos/kevin-creator-stack"
+      }
+    ],
+    "featured": true
+  },
+  {
+    "slug": "iris-chen",
+    "name": "Iris Chen",
+    "roleLabel": "Research Workflow Strategist",
+    "bio": "Covers assistant-led research loops, decision support, and operator habits for teams moving quickly.",
+    "categoryFocus": ["assistant", "productivity"],
+    "avatarUrl": "",
+    "channelUrl": "https://example.com/creators/iris-chen",
+    "platform": "Newsletter",
+    "subscriberCount": 142000,
+    "monthlyViews": 920000,
+    "courseCount": 5,
+    "featuredVideos": [
+      {
+        "title": "How to compare assistant outputs with less noise",
+        "url": "https://example.com/videos/iris-compare-assistants"
+      }
+    ],
+    "featured": false
+  },
+  {
+    "slug": "noah-patel",
+    "name": "Noah Patel",
+    "roleLabel": "Coding Agent Builder",
+    "bio": "Publishes real-world dev workflows for coding agents, patch review, and shipping with AI copilots.",
+    "categoryFocus": ["coding", "automation"],
+    "avatarUrl": "",
+    "channelUrl": "https://example.com/creators/noah-patel",
+    "platform": "YouTube",
+    "subscriberCount": 214000,
+    "monthlyViews": 4100000,
+    "courseCount": 7,
+    "featuredVideos": [
+      {
+        "title": "A sane coding agent stack for small teams",
+        "url": "https://example.com/videos/noah-agent-stack"
+      }
+    ],
+    "featured": true
+  },
+  {
+    "slug": "ava-lin",
+    "name": "Ava Lin",
+    "roleLabel": "Growth Systems Educator",
+    "bio": "Translates prompting, research, and campaign execution into operating systems for lean marketing teams.",
+    "categoryFocus": ["productivity", "automation"],
+    "avatarUrl": "",
+    "channelUrl": "https://example.com/creators/ava-lin",
+    "platform": "Podcast",
+    "subscriberCount": 98000,
+    "monthlyViews": 620000,
+    "courseCount": 4,
+    "featuredVideos": [
+      {
+        "title": "Prompt systems for weekly growth execution",
+        "url": "https://example.com/videos/ava-growth-systems"
+      }
+    ],
+    "featured": false
+  }
+]

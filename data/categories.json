@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "assistant",
+    "label": "Assistants",
+    "shortDescription": "Reasoning, drafting, analysis, and research copilots.",
+    "heroCopy": "Start here if you need a broad AI surface for work.",
+    "icon": "A",
+    "ranking": 1,
+    "relatedToolSlugs": ["chatgpt", "claude", "perplexity", "gemini"],
+    "relatedCourseSlugs": ["research-workflows-with-assistants"],
+    "relatedCreatorSlugs": ["iris-chen"]
+  },
+  {
+    "slug": "coding",
+    "label": "Coding Agents",
+    "shortDescription": "Build, patch, debug, and review with AI coding systems.",
+    "heroCopy": "Use these when the job is shipping code faster with guardrails.",
+    "icon": "C",
+    "ranking": 2,
+    "relatedToolSlugs": ["claude-code", "cursor", "github-copilot", "codeium"],
+    "relatedCourseSlugs": ["ship-with-coding-agents"],
+    "relatedCreatorSlugs": ["noah-patel"]
+  },
+  {
+    "slug": "automation",
+    "label": "Automation",
+    "shortDescription": "Workflow builders and orchestration systems for repeatable execution.",
+    "heroCopy": "Best for operators coordinating tools, triggers, and approvals.",
+    "icon": "W",
+    "ranking": 3,
+    "relatedToolSlugs": ["langchain", "langflow", "autogen"],
+    "relatedCourseSlugs": ["ai-automation-ops-playbook"],
+    "relatedCreatorSlugs": ["ava-lin", "noah-patel"]
+  },
+  {
+    "slug": "image",
+    "label": "Image",
+    "shortDescription": "Prompt-based image generation and campaign asset production.",
+    "heroCopy": "Use these to create visuals, concepts, and creative exploration assets.",
+    "icon": "I",
+    "ranking": 4,
+    "relatedToolSlugs": ["midjourney", "dalle-3", "stable-diffusion"],
+    "relatedCourseSlugs": ["image-to-campaign-systems"],
+    "relatedCreatorSlugs": ["kevin-hutson"]
+  },
+  {
+    "slug": "video",
+    "label": "Video",
+    "shortDescription": "Narration, editing, generation, and studio acceleration tools.",
+    "heroCopy": "The fastest route from script to social-ready video output.",
+    "icon": "V",
+    "ranking": 5,
+    "relatedToolSlugs": ["runway", "synthesia"],
+    "relatedCourseSlugs": ["creative-ai-production-studio"],
+    "relatedCreatorSlugs": ["kevin-hutson"]
+  },
+  {
+    "slug": "audio",
+    "label": "Audio",
+    "shortDescription": "Voice, dubbing, speech generation, and narration tooling.",
+    "heroCopy": "Voice-first AI tooling for media and training workflows.",
+    "icon": "O",
+    "ranking": 6,
+    "relatedToolSlugs": ["elevenlabs"],
+    "relatedCourseSlugs": ["creative-ai-production-studio"],
+    "relatedCreatorSlugs": ["kevin-hutson"]
+  },
+  {
+    "slug": "productivity",
+    "label": "Productivity",
+    "shortDescription": "Knowledge systems, note-taking, and workflow acceleration tools.",
+    "heroCopy": "Use these to reduce friction in repeatable desk work.",
+    "icon": "P",
+    "ranking": 7,
+    "relatedToolSlugs": ["notion-ai"],
+    "relatedCourseSlugs": ["prompt-systems-for-growth-teams"],
+    "relatedCreatorSlugs": ["ava-lin", "iris-chen"]
+  }
+]

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic AI Tools 2026 | Discover, Compare, and Shortlist AI Tools</title>
-  <meta name="description" content="Discover AI tools by category, role, pricing, and editorial picks. Compare trending products, save a shortlist, and submit your tool for review.">
+  <title>Agentic AI Tools 2026 | Discover, Compare, and Learn AI Tools</title>
+  <meta name="description" content="Discover AI tools, courses, categories, and creators in one curated AI discovery experience.">
   <link rel="canonical" href="https://agentic-ai.tools/">
   <meta property="og:title" content="Agentic AI Tools 2026">
-  <meta property="og:description" content="A curated AI tools directory with editorial picks, trending stacks, and shortlist workflows.">
+  <meta property="og:description" content="A curated AI discovery platform for tools, courses, categories, and creators.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agentic-ai.tools/">
   <meta property="og:image" content="https://agentic-ai.tools/og-image.jpg">
@@ -18,7 +18,7 @@
     "@type": "WebSite",
     "name": "Agentic AI Tools 2026",
     "url": "https://agentic-ai.tools/",
-    "description": "A curated AI tools directory with editorial picks, dynamic filtering, and shortlist workflows."
+    "description": "A curated AI discovery platform for tools, courses, categories, and creators."
   }
   </script>
 </head>
@@ -34,11 +34,12 @@
           </span>
         </a>
         <nav class="site-nav">
-          <a href="/tools-directory.html">Directory</a>
-          <a href="#collections">Collections</a>
+          <a href="/tools-directory.html">AI Tools</a>
+          <a href="/courses.html">AI Courses</a>
+          <a href="/creators.html">Creators</a>
+          <a href="#categories">Categories</a>
           <a href="#newsletter">Weekly digest</a>
           <a href="/submit-tool.html">Submit tool</a>
-          <a href="/admin.html">Admin</a>
           <span class="nav-save-pill">Saved: <span data-save-count>0</span></span>
         </nav>
       </div>
@@ -50,28 +51,26 @@
           <div class="hero-panel">
             <div class="hero-grid">
               <div class="hero-copy">
-                <span class="eyebrow">Directory-first redesign</span>
-                <h1>Find the right AI tool before your stack gets noisy.</h1>
-                <p>
-                  A curated discovery layer for AI assistants, coding agents, automation products, image tools,
-                  video generators, and operator workflows. Search fast, compare the shortlist, and save what is worth deeper evaluation.
+                <span id="heroEyebrow" class="eyebrow">Curated AI discovery</span>
+                <h1 id="heroTitle">Everything your team needs to discover AI in one place.</h1>
+                <p id="heroDescription">
+                  Browse operator-grade AI tools, jump into practical courses, and follow creators who actually use these products in the wild.
                 </p>
                 <form id="heroSearchForm" class="hero-search">
                   <input id="heroSearchInput" class="field" type="text" placeholder="Search by tool, role, or use case">
-                  <button class="button" type="submit">Search directory</button>
+                  <button class="button" type="submit">Search tools</button>
                 </form>
                 <div class="button-row">
-                  <a class="button-secondary" href="/tools-directory.html">Browse all tools</a>
-                  <a class="button-ghost" href="/submit-tool.html">Submit your tool</a>
+                  <a id="heroPrimaryCta" class="button-secondary" href="/tools-directory.html">Explore AI Tools</a>
+                  <a id="heroSecondaryCta" class="button-ghost" href="/courses.html">Explore Courses</a>
                 </div>
               </div>
 
               <div class="hero-side">
                 <div class="glass-card">
-                  <strong>What changed</strong>
+                  <strong>Discovery surfaces</strong>
                   <p class="meta-copy">
-                    The site now behaves like a real product directory: dynamic search, category filtering,
-                    shortlist actions, newsletter capture, and tool submissions backed by API state.
+                    Switch between popular tools, newly added products, and practical AI courses from one homepage.
                   </p>
                 </div>
                 <div class="glass-card hero-notes">
@@ -79,21 +78,21 @@
                     <span class="hero-note-badge" aria-hidden="true"></span>
                     <div>
                       <strong>Editorial over noise</strong>
-                      <div class="meta-copy">Featured tools, role-based collections, and clear pricing signals.</div>
+                      <div class="meta-copy">A curated homepage with categories, courses, creators, and shortlists.</div>
                     </div>
                   </div>
                   <div class="hero-note">
                     <span class="hero-note-badge" aria-hidden="true"></span>
                     <div>
-                      <strong>Shortlist workflow</strong>
-                      <div class="meta-copy">Save tools while browsing and return later with context intact.</div>
+                      <strong>Faster evaluation</strong>
+                      <div class="meta-copy">Use ranking, freshness, and category context to narrow faster.</div>
                     </div>
                   </div>
                   <div class="hero-note">
                     <span class="hero-note-badge" aria-hidden="true"></span>
                     <div>
-                      <strong>Supply-side funnel</strong>
-                      <div class="meta-copy">Collect newsletter leads and tool submissions without a full CMS.</div>
+                      <strong>Learning loop</strong>
+                      <div class="meta-copy">Courses and creators turn discovery into execution, not just browsing.</div>
                     </div>
                   </div>
                 </div>
@@ -109,61 +108,70 @@
 
       <section class="section">
         <div class="section-inner">
+          <div id="trustStrip" class="trust-strip"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
           <div class="stats-grid">
             <article class="stat-card">
               <strong id="toolCount">0</strong>
               <div class="meta-copy">Tools indexed</div>
             </article>
             <article class="stat-card">
+              <strong id="courseCount">0</strong>
+              <div class="meta-copy">Courses available</div>
+            </article>
+            <article class="stat-card">
+              <strong id="creatorCount">0</strong>
+              <div class="meta-copy">Creators tracked</div>
+            </article>
+            <article class="stat-card">
               <strong id="categoryCount">0</strong>
-              <div class="meta-copy">Categories with live counts</div>
-            </article>
-            <article class="stat-card">
-              <strong id="verifiedCount">0</strong>
-              <div class="meta-copy">Verified listings</div>
-            </article>
-            <article class="stat-card">
-              <strong id="featuredCount">0</strong>
-              <div class="meta-copy">Editorially featured</div>
+              <div class="meta-copy">Discovery lanes</div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="categories">
+      <section class="section" id="feed">
         <div class="section-inner">
           <div class="section-head">
             <div>
-              <h2>Browse by category</h2>
-              <p>Start with the surface that matches the job to be done, then narrow by pricing, verification, and editorial fit.</p>
+              <h2>Popular now</h2>
+              <p>Browse the main feed by popularity, freshness, or learning surface without leaving the homepage.</p>
             </div>
-            <a class="button-ghost" href="/tools-directory.html">Open full directory</a>
+            <a class="button-ghost" href="/tools-directory.html">Open tool directory</a>
           </div>
-          <div id="categoryGrid" class="category-grid"></div>
+          <div class="home-feed-layout">
+            <aside class="panel home-category-rail">
+              <h3>Most popular categories</h3>
+              <div id="homeCategoryRail" class="category-rail"></div>
+            </aside>
+            <div class="home-feed-main">
+              <div id="homeFeedTabs" class="feed-tabs"></div>
+              <div id="homeFeedGrid" class="home-feed-grid"></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section-dark" id="categories">
         <div class="section-inner">
           <div class="section-head">
             <div>
-              <h2>Featured picks</h2>
-              <p>High-confidence starting points for most users. These are the tools we would put on a first-pass shortlist today.</p>
+              <h2>Trending categories</h2>
+              <p>Use category chips as the fastest jump point into the part of the AI landscape you actually care about.</p>
             </div>
           </div>
-          <div id="featuredGrid" class="card-grid"></div>
+          <div id="categorySpotlightGrid" class="category-spotlight-grid"></div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="creators">
         <div class="section-inner">
-          <div class="section-head">
-            <div>
-              <h2>Trending this week</h2>
-              <p>Momentum tools worth checking now, ordered by internal trend score, product interest, and editorial recency.</p>
-            </div>
-          </div>
-          <div id="trendingGrid" class="card-grid"></div>
+          <div id="creatorSpotlight" class="creator-spotlight"></div>
         </div>
       </section>
 
@@ -184,7 +192,7 @@
           <div class="section-head">
             <div>
               <h2>Your shortlist</h2>
-              <p>Saved tools should feel like a working list, not just a counter in the navbar. Use this section to return to candidates worth deeper review.</p>
+              <p>Saved tools should feel like a working list, not just a counter in the navbar.</p>
             </div>
             <a class="button-ghost" href="/tools-directory.html">Keep exploring</a>
           </div>
@@ -199,7 +207,7 @@
               <span class="eyebrow" style="background: rgba(255,255,255,0.12); color: #f3f7f5;">Weekly shortlist</span>
               <h2 style="margin-top: 16px;">Get the operator-grade AI tools digest.</h2>
               <p style="margin-top: 14px;">
-                One concise weekly email: what is worth testing, what is overhyped, and which tools are trending by role and category.
+                One concise weekly email: what is worth testing, what is overhyped, and which tools and courses are trending by role and category.
               </p>
             </div>
             <div>
@@ -226,7 +234,7 @@
               <span class="eyebrow" style="background: rgba(255,255,255,0.12); color: #f3f7f5;">Supply side</span>
               <h2 style="margin-top: 16px;">Have a tool worth listing?</h2>
               <p style="margin-top: 14px;">
-                Use the submission flow to send your product for editorial review. The new backend stores submissions so the front page can evolve without hardcoded HTML edits.
+                Use the submission flow to send your product for editorial review while the catalog expands beyond tools into courses and creators.
               </p>
               <div class="button-row">
                 <a class="button" href="/submit-tool.html">Submit tool</a>
@@ -234,11 +242,11 @@
               </div>
             </div>
             <div class="submit-benefits">
-              <span class="pill">Dynamic listings</span>
-              <span class="pill">Verified badge support</span>
+              <span class="pill">Tabbed discovery</span>
+              <span class="pill">Course surface</span>
+              <span class="pill">Creator spotlight</span>
+              <span class="pill">Category jump points</span>
               <span class="pill">Shortlist actions</span>
-              <span class="pill">Newsletter capture</span>
-              <span class="pill">Editorial collections</span>
             </div>
           </div>
         </div>
@@ -248,12 +256,12 @@
     <footer class="footer">
       <div class="footer-inner">
         <div>Agentic AI Tools 2026</div>
-        <div>Directory-first MVP aligned to curated AI discovery workflows.</div>
+        <div>Discovery homepage with tools, courses, categories, and creator surfaces.</div>
       </div>
     </footer>
   </div>
 
   <div data-global-status class="status section-inner"></div>
-  <script src="/scripts/futurepedia-app.js"></script>
+  <script type="module" src="/scripts/home-page.js"></script>
 </body>
 </html>

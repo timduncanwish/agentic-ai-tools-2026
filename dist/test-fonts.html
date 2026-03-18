@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Test</title>
+    <style>
+        @font-face {
+            font-family: 'Orbitron';
+            src: url('/fonts/orbitron.woff2') format('woff2');
+            font-display: swap;
+        }
+        body {
+            font-family: 'Orbitron', sans-serif;
+            padding: 2rem;
+            background: #0a0a0f;
+            color: #00f5ff;
+        }
+        .test {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Font Test Page</h1>
+    <div class="test">If you see this text in Orbitron font, it works!</div>
+    <div class="test">Testing: ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+    <div class="test">Testing: abcdefghijklmnopqrstuvwxyz</div>
+    <div class="test">Testing: 0123456789</div>
+</body>
+</html>

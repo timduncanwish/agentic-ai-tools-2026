@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creators | Follow Practical AI Operators</title>
+  <meta name="description" content="Discover creators, operators, and educators publishing practical AI workflows worth following.">
+  <link rel="stylesheet" href="/styles/futurepedia-redesign.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand-lockup" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <span class="brand-title">Agentic AI Tools 2026</span>
+            <span class="brand-subtitle">Creators and editorial operators</span>
+          </span>
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/tools-directory.html">AI Tools</a>
+          <a href="/courses.html">AI Courses</a>
+          <a href="/submit-tool.html">Submit tool</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero" style="padding-bottom: 8px;">
+        <div class="section-inner">
+          <div class="hero-panel">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <span class="eyebrow">Creators</span>
+                <h1>Follow people who actually operate these tools.</h1>
+                <p>
+                  This surface highlights educators, creators, and workflow builders whose content helps users
+                  move from vague interest to repeatable execution.
+                </p>
+              </div>
+              <div class="hero-side">
+                <div class="glass-card">
+                  <strong>Why this matters</strong>
+                  <p class="meta-copy">Personality and trust increase repeat visits far more than anonymous tool cards alone.</p>
+                </div>
+                <div class="glass-card">
+                  <strong>Focus</strong>
+                  <p class="meta-copy">Search by topic, narrow by platform, and sort by reach or featured priority.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="discovery-shell">
+            <aside class="filters-panel panel">
+              <h3>Filter creators</h3>
+              <div class="filter-group">
+                <label for="creatorSearch">Search</label>
+                <input id="creatorSearch" class="field" type="text" placeholder="Creator, role, or topic">
+              </div>
+              <div class="filter-group">
+                <label>Focus areas</label>
+                <div id="creatorCategoryFilters" class="filter-pills"></div>
+              </div>
+              <div class="filter-group">
+                <label for="creatorPlatform">Platform</label>
+                <select id="creatorPlatform" class="select">
+                  <option value="all">All platforms</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="newsletter">Newsletter</option>
+                  <option value="podcast">Podcast</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="creatorSort">Sort</label>
+                <select id="creatorSort" class="select">
+                  <option value="featured">Featured first</option>
+                  <option value="audience">Largest audience</option>
+                  <option value="views">Most views</option>
+                  <option value="alphabetical">Alphabetical</option>
+                </select>
+              </div>
+            </aside>
+
+            <section class="results-panel">
+              <div class="results-stack">
+                <div class="results-toolbar panel catalog-toolbar">
+                  <div>
+                    <h3>Browse creators</h3>
+                    <div id="creatorResultsCount" class="meta-copy">0 creators</div>
+                  </div>
+                </div>
+                <div id="creatorPageSpotlight"></div>
+                <div id="creatorEmptyState" class="empty-state hidden">
+                  <h3>No creators match the current filters</h3>
+                  <p class="empty-copy">Try a broader query, change the platform, or switch focus areas.</p>
+                </div>
+                <div id="creatorsGrid" class="creator-grid"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>Creator discovery is now a first-class surface.</div>
+        <div>Phase 2 adds richer filtering and category linkage.</div>
+      </div>
+    </footer>
+  </div>
+
+  <div data-global-status class="status section-inner"></div>
+  <script type="module" src="/scripts/creators-page.js"></script>
+</body>
+</html>

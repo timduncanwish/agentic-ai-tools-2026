@@ -16,6 +16,10 @@ router.get('/category.html', (_req, res) => {
   res.sendFile(path.join(DIST_DIR, 'category.html'));
 });
 
+router.get('/category/:slug', (_req, res) => {
+  res.sendFile(path.join(DIST_DIR, 'category.html'));
+});
+
 router.get('/courses.html', (_req, res) => {
   res.sendFile(path.join(DIST_DIR, 'courses.html'));
 });

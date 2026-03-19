@@ -1,5 +1,6 @@
 export const API = {
   home: '/api/home',
+  homeSpotlights: '/api/home/spotlights',
   homeFeed: '/api/home-feed',
   categories: '/api/categories',
   tools: '/api/tools',
@@ -7,7 +8,10 @@ export const API = {
   creators: '/api/creators',
   favorites: '/api/favorites',
   toggleFavorite: '/api/favorites/toggle',
-  newsletter: '/api/newsletter'
+  newsletter: '/api/newsletter',
+  submissions: '/api/submissions',
+  adminOverview: '/api/admin/overview',
+  adminTools: '/api/admin/tools'
 };
 
 export function escapeHtml(value) {

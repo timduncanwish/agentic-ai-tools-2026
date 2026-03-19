@@ -16,6 +16,10 @@ router.get('/api/home', (req, res) => {
   res.json(discoveryService.getHomePayload(clientId));
 });
 
+router.get('/api/home/spotlights', (_req, res) => {
+  res.json(discoveryService.getHomeSpotlights());
+});
+
 router.get('/api/home-feed', (req, res) => {
   const tab = String(req.query.tab || 'popular-tools');
   res.json({

@@ -18,9 +18,11 @@ import {
 const state = {
   clientId: '',
   home: null,
+  spotlights: null,
   favoriteSlugs: new Set(),
   favorites: [],
-  activeTab: 'popular-tools'
+  activeTab: 'popular-tools',
+  feedCache: new Map()
 };
 
 function renderHero(hero) {
@@ -170,26 +172,61 @@ function renderFeedTabs(tabs) {
     .join('');
 
   tabList.querySelectorAll('.feed-tab').forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       state.activeTab = button.dataset.tab;
       renderFeedTabs(tabs);
-      renderActiveFeed();
+      try {
+        await renderActiveFeed();
+      } catch (error) {
+        setGlobalStatus(error.message, true);
+      }
     });
   });
 }
 
-function renderActiveFeed() {
+function primeFeedCache(tabs) {
+  tabs.forEach((tab) => {
+    if (Array.isArray(tab.items)) {
+      state.feedCache.set(tab.key, {
+        type: tab.type,
+        items: tab.items
+      });
+    }
+  });
+}
+
+async function ensureTabFeed(activeTab) {
+  if (state.feedCache.has(activeTab.key)) {
+    return state.feedCache.get(activeTab.key);
+  }
+
+  const data = await requestJson(`${API.homeFeed}?tab=${encodeURIComponent(activeTab.key)}`);
+  const payload = {
+    type: data.type || activeTab.type || 'tools',
+    items: Array.isArray(data.items) ? data.items : []
+  };
+  state.feedCache.set(activeTab.key, payload);
+  return payload;
+}
+
+async function renderActiveFeed() {
   const active = state.home.feedTabs.find((tab) => tab.key === state.activeTab) || state.home.feedTabs[0];
   const grid = document.getElementById('homeFeedGrid');
+  if (!active) {
+    grid.className = 'home-feed-grid';
+    grid.innerHTML = '';
+    return;
+  }
+  const feed = await ensureTabFeed(active);
 
-  if (active.type === 'courses') {
+  if (feed.type === 'courses') {
     grid.className = 'home-feed-grid is-courses';
-    grid.innerHTML = active.items.map((course) => createCourseCard(course)).join('');
+    grid.innerHTML = feed.items.map((course) => createCourseCard(course)).join('');
     return;
   }
 
   grid.className = 'home-feed-grid';
-  grid.innerHTML = active.items.map((tool) => createToolFeedCard(tool, state.favoriteSlugs)).join('');
+  grid.innerHTML = feed.items.map((tool) => createToolFeedCard(tool, state.favoriteSlugs)).join('');
   wireFavoriteButtons(grid, handleToggleFavorite);
 }
 
@@ -207,7 +244,7 @@ async function handleToggleFavorite(slug) {
   state.favoriteSlugs = new Set(state.favorites.map((item) => item.slug));
   setSaveCount(state.favorites.length);
   renderShortlistSection();
-  renderActiveFeed();
+  await renderActiveFeed();
 }
 
 function wireNewsletterForm() {
@@ -252,23 +289,30 @@ function wireHeroSearch() {
 async function init() {
   state.clientId = getClientId();
 
-  const [home, favorites] = await Promise.all([
+  const [home, spotlights, favorites] = await Promise.all([
     requestJson(`${API.home}?clientId=${encodeURIComponent(state.clientId)}`),
+    requestJson(API.homeSpotlights),
     loadFavorites(state.clientId)
   ]);
 
   state.home = home;
+  state.spotlights = spotlights;
   state.favorites = favorites;
   state.favoriteSlugs = new Set(favorites.map((item) => item.slug));
+  primeFeedCache(home.feedTabs || []);
+
+  const trendingCategories = state.spotlights.trendingCategories || state.home.showcaseCategories || [];
+  const creatorSpotlight = state.spotlights.creatorSpotlight || state.home.creatorSpotlight || null;
+  const editorialCollections = state.spotlights.editorialCollections || state.home.curatedCollections || [];
 
   renderHero(home.hero);
   renderTrustStrip(home.trustStrip);
   renderStats(home.stats);
-  renderCategoryRail(home.showcaseCategories);
-  renderCollections(home.curatedCollections);
-  renderSpotlight(home.creatorSpotlight);
+  renderCategoryRail(trendingCategories);
+  renderCollections(editorialCollections);
+  renderSpotlight(creatorSpotlight);
   renderFeedTabs(home.feedTabs);
-  renderActiveFeed();
+  await renderActiveFeed();
   renderShortlistSection();
   setSaveCount(favorites.length);
   wireHeroSearch();

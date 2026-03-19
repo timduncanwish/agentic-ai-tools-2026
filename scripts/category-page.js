@@ -22,6 +22,15 @@ const state = {
 };
 
 function getSlug() {
+  const pathMatch = window.location.pathname.match(/^\/category\/([^/?#]+)/);
+  if (pathMatch && pathMatch[1]) {
+    try {
+      return decodeURIComponent(pathMatch[1]);
+    } catch (_error) {
+      return pathMatch[1];
+    }
+  }
+
   return new URLSearchParams(window.location.search).get('slug') || '';
 }
 

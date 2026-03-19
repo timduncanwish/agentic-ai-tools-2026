@@ -11,6 +11,7 @@
     "generate": "node scripts/content-generator.js",
     "deploy": "node scripts/deploy.js",
     "full": "node scripts/trend-monitor.js && node scripts/content-generator.js && node scripts/deploy.js",
+    "test:smoke": "node scripts/smoke-api.js",
     "seo": "node generate-sitemap.js",
     "seo:audit": "node seo-optimizer.js",
     "seo:all": "node generate-sitemap.js && node seo-optimizer.js"

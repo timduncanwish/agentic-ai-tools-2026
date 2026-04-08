@@ -4,7 +4,7 @@
 
 **部署时间**: 2026-01-14
 **部署平台**: Vercel
-**项目名称**: Agentic AI Tools 2026
+**项目名称**: Agentic AI Tools
 **状态**: ✅ 已上线
 
 ---
@@ -295,7 +295,7 @@ E:\trend-rush-skill\
 
 ## 🎊 恭喜！
 
-你的 **Agentic AI Tools 2026** 网站已经成功上线！
+你的 **Agentic AI Tools** 网站已经成功上线！
 
 ### 你现在拥有：
 - ✅ 一个专业的AI工具评测网站

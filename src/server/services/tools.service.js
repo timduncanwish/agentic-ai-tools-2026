@@ -56,6 +56,7 @@ function filterTools(tools, query) {
   const category = (query.category || 'all').toLowerCase();
   const pricing = (query.pricing || 'all').toLowerCase();
   const verifiedOnly = String(query.verified || '').toLowerCase() === 'true';
+  const listingTier = (query.listingTier || 'all').toLowerCase();
   const tag = (query.tag || '').trim().toLowerCase();
 
   return tools.filter((tool) => {
@@ -68,6 +69,10 @@ function filterTools(tools, query) {
     }
 
     if (verifiedOnly && !tool.verified) {
+      return false;
+    }
+
+    if (listingTier !== 'all' && tool.listingTier !== listingTier) {
       return false;
     }
 

@@ -22,7 +22,7 @@ The user asked to reorganize the product architecture and PRD around that layout
 
 ## 2. Product Goal
 
-Build `Agentic AI Tools 2026` into a multi-surface discovery platform where users can:
+Build `Agentic AI Tools` into a multi-surface discovery platform where users can:
 
 - discover AI tools, courses, and creator channels from one homepage
 - switch between popular, newly added, and course-focused feeds

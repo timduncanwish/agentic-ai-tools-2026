@@ -1,4 +1,4 @@
-# Frequently Asked Questions - Agentic AI Tools 2026
+# Frequently Asked Questions - Agentic AI Tools
 
 **Last Updated: January 14, 2026**
 

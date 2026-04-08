@@ -62,7 +62,7 @@ const NEW_FOOTER = `    <footer class="footer">
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Agentic AI Tools 2026. All rights reserved.</p>
+            <p>&copy; 2026 Agentic AI Tools. All rights reserved.</p>
             <p style="margin-top: var(--space-sm); font-size: 0.75rem;">Last updated: January 19, 2026</p>
             <p style="margin-top: var(--space-md); font-size: 0.75rem; color: var(--color-text-muted);">
                 Affiliate Disclosure: We may earn a commission when you purchase through our links.

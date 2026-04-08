@@ -1,5 +1,6 @@
 const express = require('express');
 const { DIST_DIR, SCRIPTS_DIR, STYLES_DIR } = require('./config/paths');
+const { getDb, migrateFromJson } = require('./services/db.service');
 const publicRoutes = require('./routes/public.routes');
 const adminRoutes = require('./routes/admin.routes');
 const pageRoutes = require('./routes/page.routes');
@@ -19,6 +20,13 @@ app.use(adminRoutes);
 app.use(pageRoutes);
 
 function startServer(port = PORT) {
+  // Initialize database and migrate JSON data
+  getDb();
+  const migration = migrateFromJson();
+  if (!migration.skipped) {
+    console.log(`Database migrated: ${migration.toolsMigrated} tools, ${migration.categoriesMigrated} categories`);
+  }
+
   return app.listen(port, () => {
     console.log(`Agentic AI Tools server running at http://localhost:${port}`);
   });

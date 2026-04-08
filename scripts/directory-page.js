@@ -17,6 +17,7 @@ const state = {
   category: 'all',
   pricing: 'all',
   verified: false,
+  listingTier: 'all',
   sort: 'featured',
   clientId: '',
   favoriteSlugs: new Set(),
@@ -40,6 +41,10 @@ function syncDirectoryUrl() {
 
   if (state.verified) {
     params.set('verified', 'true');
+  }
+
+  if (state.listingTier !== 'all') {
+    params.set('listingTier', state.listingTier);
   }
 
   if (state.sort !== 'featured') {
@@ -68,7 +73,7 @@ function createDirectoryToolCard(tool, favoriteSlugs) {
       <div class="meta-row">
         <span class="meta-chip">${escapeHtml(tool.categoryLabel)}</span>
         <span class="meta-chip">${escapeHtml(tool.pricingLabel)}</span>
-        ${tool.verified ? '<span class="meta-chip is-brand">Verified</span>' : ''}
+        ${tool.verified ? '<span class="meta-chip is-brand"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -1px; margin-right: 2px;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>Verified</span>' : ''}
         ${tool.featured ? '<span class="meta-chip is-accent">Featured</span>' : ''}
       </div>
       <div class="tag-row">
@@ -149,7 +154,8 @@ async function renderResults() {
     category: state.category,
     pricing: state.pricing,
     sort: state.sort,
-    verified: String(state.verified)
+    verified: String(state.verified),
+    listingTier: state.listingTier
   });
 
   const data = await requestJson(`${API.tools}?${query.toString()}`);
@@ -188,6 +194,7 @@ async function init() {
   state.category = params.get('category') || 'all';
   state.pricing = params.get('pricing') || 'all';
   state.verified = params.get('verified') === 'true';
+  state.listingTier = params.get('listingTier') || 'all';
   state.sort = params.get('sort') || 'featured';
   state.clientId = getClientId();
 
@@ -199,6 +206,7 @@ async function init() {
   const pricingSelect = getField('pricingFilter');
   const sortSelect = getField('sortFilter');
   const verifiedCheckbox = getField('verifiedFilter');
+  const tierSelect = getField('tierFilter');
   const categoryFilters = getField('categoryFilters');
   const resetFilters = getField('resetFilters');
   const detailSave = getField('toolDetailSave');
@@ -207,6 +215,7 @@ async function init() {
   pricingSelect.value = state.pricing;
   sortSelect.value = state.sort;
   verifiedCheckbox.checked = state.verified;
+  tierSelect.value = state.listingTier;
 
   categoryFilters.innerHTML = [
     '<button class="filter-pill" data-category="all" type="button">All categories</button>',
@@ -258,17 +267,24 @@ async function init() {
     await renderResults();
   });
 
+  tierSelect.addEventListener('change', async () => {
+    state.listingTier = tierSelect.value;
+    await renderResults();
+  });
+
   resetFilters.addEventListener('click', async () => {
     state.q = '';
     state.category = 'all';
     state.pricing = 'all';
     state.sort = 'featured';
     state.verified = false;
+    state.listingTier = 'all';
 
     searchInput.value = '';
     pricingSelect.value = 'all';
     sortSelect.value = 'featured';
     verifiedCheckbox.checked = false;
+    tierSelect.value = 'all';
     await renderResults();
   });
 

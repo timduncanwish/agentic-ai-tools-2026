@@ -12,6 +12,8 @@
     "deploy": "node scripts/deploy.js",
     "full": "node scripts/trend-monitor.js && node scripts/content-generator.js && node scripts/deploy.js",
     "test:smoke": "node scripts/smoke-api.js",
+    "test:ui-smoke": "node scripts/smoke-ui.js",
+    "test:all": "npm run test:smoke && npm run test:ui-smoke",
     "seo": "node generate-sitemap.js",
     "seo:audit": "node seo-optimizer.js",
     "seo:all": "node generate-sitemap.js && node seo-optimizer.js"
@@ -27,6 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.0",
+    "better-sqlite3": "^12.8.0",
     "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.0",
     "google-trends-api": "^4.9.2"

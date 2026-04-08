@@ -1,4 +1,4 @@
-# Agentic AI Tools 2026: The Complete Guide to Autonomous AI Agents
+# Agentic AI Tools: The Complete Guide to Autonomous AI Agents
 
 **Last Updated: January 13, 2026** | **Read Time: 12 minutes**
 

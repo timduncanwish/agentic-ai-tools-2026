@@ -1,4 +1,4 @@
-# 部署指南 - Agentic AI Tools 2026
+# 部署指南 - Agentic AI Tools
 
 ## 🚀 快速部署到 Vercel（推荐）
 
@@ -265,5 +265,5 @@ A:
 ---
 
 **最后更新**: 2026-01-14
-**项目**: Agentic AI Tools 2026
+**项目**: Agentic AI Tools
 **位置**: E:\trend-rush-skill\

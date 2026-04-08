@@ -10,7 +10,7 @@ function getShowcaseCategories() {
   const creatorMap = new Map(creators.map((item) => [item.slug, item]));
 
   return catalogRepository
-    .getCategoryCatalog()
+    .getCategories()
     .map((category) => {
       const relatedTools = (category.relatedToolSlugs || []).map((slug) => toolMap.get(slug)).filter(Boolean);
       const relatedCourses = (category.relatedCourseSlugs || []).map((slug) => courseMap.get(slug)).filter(Boolean);

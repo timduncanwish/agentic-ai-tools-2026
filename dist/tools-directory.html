@@ -19,17 +19,18 @@
         <a class="brand-lockup" href="/">
           <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-text">
-            <span class="brand-title">Agentic AI Tools 2026</span>
+            <span class="brand-title">Agentic AI Tools</span>
             <span class="brand-subtitle">Directory and editorial shortlist</span>
           </span>
         </a>
         <nav class="site-nav">
           <a href="/">Home</a>
+          <a href="/tools-directory.html">AI Tools</a>
           <a href="/courses.html">AI Courses</a>
           <a href="/creators.html">Creators</a>
+          <a href="#directoryFilters">Filters</a>
           <a href="/submit-tool.html">Submit tool</a>
-          <a href="/admin.html">Admin</a>
-          <span class="nav-save-pill">Saved: <span data-save-count>0</span></span>
+          <span class="nav-save-pill">Saved <span data-save-count>0</span></span>
         </nav>
       </div>
     </header>
@@ -40,24 +41,29 @@
           <div class="hero-panel">
             <div class="hero-grid">
               <div class="hero-copy">
-                <span class="eyebrow">Directory</span>
-                <h1>Filter by fit, not by hype.</h1>
+                <span class="eyebrow">AI Tools Directory</span>
+                <h1>Compare tools with less noise.</h1>
                 <p>
-                  Search across assistants, coding agents, automation frameworks, image tools, video products,
-                  audio platforms, and operator-grade productivity software. Save anything worth a second look.
+                  Use category, pricing, verification, and sorting controls to narrow to the right tools quickly.
+                  Save candidates as you browse and open quick view for side-by-side evaluation context.
                 </p>
+                <div class="meta-row">
+                  <span class="meta-chip is-brand">Live API-driven data</span>
+                  <span class="meta-chip">Fast category filters</span>
+                  <span class="meta-chip">Save to shortlist</span>
+                </div>
               </div>
               <div class="hero-side">
                 <div class="glass-card">
-                  <strong>Directory principles</strong>
+                  <strong>How to use this page</strong>
                   <p class="meta-copy">
-                    Featured-first sorting, verified flags, pricing model filters, and concise editorial notes keep the discovery workflow usable.
+                    Start with search and category pills, then use pricing and verification filters. Open quick view to inspect details without leaving results.
                   </p>
                 </div>
                 <div class="glass-card">
-                  <strong>Why this page exists</strong>
+                  <strong>What makes this useful</strong>
                   <p class="meta-copy">
-                    The old directory was static HTML. This page is now API-driven, maintainable, and designed for repeated visits.
+                    Futurepedia-style layout with explicit filters, clear card metadata, and shortlist persistence designed for repeat visits.
                   </p>
                 </div>
               </div>
@@ -69,7 +75,7 @@
       <section class="section">
         <div class="section-inner">
           <div class="directory-layout">
-            <aside class="filters-panel panel">
+            <aside id="directoryFilters" class="filters-panel panel">
               <h3>Filters</h3>
 
               <div class="filter-group">
@@ -110,6 +116,17 @@
                 </label>
               </div>
 
+              <div class="filter-group">
+                <label for="tierFilter">Listing tier</label>
+                <select id="tierFilter" class="select">
+                  <option value="all">All tiers</option>
+                  <option value="featured">Featured</option>
+                  <option value="verified">Verified</option>
+                  <option value="enhanced">Enhanced</option>
+                  <option value="free">Free listing</option>
+                </select>
+              </div>
+
               <div class="button-row">
                 <button id="resetFilters" class="button-ghost" type="button">Reset filters</button>
               </div>
@@ -119,7 +136,7 @@
               <div class="results-stack">
                 <div class="results-toolbar panel">
                   <div>
-                    <h3>Results</h3>
+                    <h3>Directory results</h3>
                     <div id="resultsCount" class="meta-copy">0 tools</div>
                   </div>
                   <a class="button-ghost" href="/submit-tool.html">Submit a missing tool</a>
@@ -145,7 +162,7 @@
 
                 <div id="emptyState" class="empty-state hidden">
                   <h3>No tools match the current filters</h3>
-                  <p class="empty-copy">Reset the filters or broaden the query. The new directory API is working, but the current filter combination returned nothing.</p>
+                  <p class="empty-copy">Reset filters or broaden your query to see more candidates.</p>
                 </div>
               </div>
             </section>
@@ -156,8 +173,8 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <div>Dynamic directory backed by Express + JSON state.</div>
-        <div>Use save, newsletter, and submission flows to test product retention loops.</div>
+        <div>Agentic AI Tools Directory</div>
+        <div>Futurepedia-aligned filtering and comparison workflow for AI product discovery.</div>
       </div>
     </footer>
   </div>

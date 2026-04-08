@@ -1,4 +1,4 @@
-# Agentic AI Tools 2026 重构 PRD
+# Agentic AI Tools 重构 PRD
 
 ## 1. 项目背景
 

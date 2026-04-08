@@ -80,7 +80,7 @@ PayPal邮箱: __________________（用于接收付款）
 ### 网站信息（已准备好）：
 
 ✅ 网站 URL: https://agentic-ai-tools-2026.vercel.app
-✅ 网站描述: Agentic AI Tools 2026 - Comprehensive guide to AI agents and automation tools
+✅ 网站描述: Agentic AI Tools - Comprehensive guide to AI agents and automation tools
 ✅ 内容类型: Reviews, tutorials, comparisons, guides
 ✅ 总页数: 56 pages
 ✅ 月访问量: Growing (newly launched)

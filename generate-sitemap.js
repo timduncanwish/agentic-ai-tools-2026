@@ -124,7 +124,7 @@ function generateSitemap() {
 }
 
 function generateRobotsTxt() {
-  let robots = `# robots.txt for Agentic AI Tools 2026\n`;
+  let robots = `# robots.txt for Agentic AI Tools\n`;
   robots += `# Last updated: ${TODAY}\n\n`;
   robots += `User-agent: *\n`;
   robots += `Allow: /\n\n`;

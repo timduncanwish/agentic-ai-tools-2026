@@ -15,9 +15,9 @@ const TODAY = new Date().toISOString().split('T')[0];
 // Page-specific SEO metadata
 const seoMetadata = {
   'index.html': {
-    title: 'Agentic AI Tools 2026 - Complete Guide to Autonomous AI Agents',
+    title: 'Agentic AI Tools - Complete Guide to Autonomous AI Agents',
     description: 'Discover the best Agentic AI Tools for 2026: Complete reviews, comparison, and expert tips on AutoGPT, Claude Code, CrewAI, and more.',
-    keywords: 'Agentic AI Tools 2026, autonomous AI, AI agents, AutoGPT, Claude Code, CrewAI, AgentGPT, best AI tools'
+    keywords: 'Agentic AI Tools, autonomous AI, AI agents, AutoGPT, Claude Code, CrewAI, AgentGPT, best AI tools'
   },
   'claude-code-ultimate-guide.html': {
     title: 'Claude Code Ultimate Guide 2026 - Master Anthropic\'s AI Coding Assistant',
@@ -93,7 +93,7 @@ const seoMetadata = {
 
 // Default metadata for pages without specific config
 const defaultMetadata = {
-  description: 'Explore Agentic AI Tools 2026: Your comprehensive guide to autonomous AI agents, AI-powered tools, and the future of artificial intelligence.',
+  description: 'Explore Agentic AI Tools: Your comprehensive guide to autonomous AI agents, AI-powered tools, and the future of artificial intelligence.',
   keywords: 'AI tools 2026, artificial intelligence, AI agents, machine learning, automation'
 };
 
@@ -107,7 +107,7 @@ function getSeoMetadata(filename) {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
     return {
-      title: `${title} - Agentic AI Tools 2026`,
+      title: `${title} - Agentic AI Tools`,
       ...defaultMetadata
     };
   }

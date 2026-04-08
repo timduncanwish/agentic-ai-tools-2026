@@ -1,8 +1,8 @@
-# 🎯 Agentic AI Tools 2026 - 项目概览
+# 🎯 Agentic AI Tools - 项目概览
 
 ## 📊 关键词分析
 
-**关键词**: "Agentic AI Tools 2026"
+**关键词**: "Agentic AI Tools"
 
 **价值评分**: 9.5/10 ⭐⭐⭐⭐⭐
 
@@ -28,7 +28,7 @@
 ## 📝 内容计划
 
 ### 主文章（2000字）
-- 标题: "Agentic AI Tools 2026: The Complete Guide to Autonomous AI Agents"
+- 标题: "Agentic AI Tools: The Complete Guide to Autonomous AI Agents"
 - 章节:
   1. 什么是 Agentic AI
   2. Top 10 Agentic AI Tools
@@ -86,6 +86,6 @@
 
 ---
 
-**关键词**: Agentic AI Tools 2026
+**关键词**: Agentic AI Tools
 **目标**: 1小时内上线
 **预期**: Day 1 $30-130

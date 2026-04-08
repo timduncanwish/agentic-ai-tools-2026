@@ -1,4 +1,7 @@
 const catalogRepository = require('../repositories/catalog.repository');
+const { readJson } = require('../utils/common');
+const paths = require('../config/paths');
+const fs = require('fs');
 const toolsService = require('./tools.service');
 const coursesService = require('./courses.service');
 const creatorsService = require('./creators.service');
@@ -88,7 +91,10 @@ function getHomeSpotlights() {
   const tools = catalogRepository.getTools();
   const courses = catalogRepository.getCourses();
   const creators = catalogRepository.getCreators();
-  const homeConfig = catalogRepository.getHomeConfig();
+  let homeConfig = { hero: {}, trustStrip: [], feedTabs: [], creatorSpotlightSlug: '' };
+  if (fs.existsSync(paths.HOME_CONFIG_FILE)) {
+    homeConfig = readJson(paths.HOME_CONFIG_FILE);
+  }
 
   return {
     generatedAt: new Date().toISOString(),

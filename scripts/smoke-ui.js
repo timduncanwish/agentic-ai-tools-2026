@@ -106,8 +106,8 @@ async function main() {
       assertIncludes(res.text, page.required, `Page ${page.path}`);
     }
 
-    const css = await fetchText(baseUrl, '/styles/futurepedia-redesign.css');
-    assert(css.response.ok, 'Failed to load /styles/futurepedia-redesign.css');
+    const css = await fetchText(baseUrl, '/styles/agentic-redesign.css');
+    assert(css.response.ok, 'Failed to load /styles/agentic-redesign.css');
     assertIncludes(
       css.text,
       [

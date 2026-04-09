@@ -85,9 +85,11 @@ function initializeSchema() {
       bio TEXT DEFAULT '',
       avatar_url TEXT DEFAULT '',
       category_focus TEXT DEFAULT '[]',
+      platform TEXT DEFAULT '',
       subscriber_count INTEGER DEFAULT 0,
       monthly_views INTEGER DEFAULT 0,
       course_count INTEGER DEFAULT 0,
+      featured INTEGER DEFAULT 0,
       featured_videos TEXT DEFAULT '[]',
       website_url TEXT DEFAULT '',
       social_links TEXT DEFAULT '{}'
@@ -126,8 +128,16 @@ function initializeSchema() {
     CREATE INDEX IF NOT EXISTS idx_tools_featured ON tools(featured);
     CREATE INDEX IF NOT EXISTS idx_categories_slug ON categories(slug);
     CREATE INDEX IF NOT EXISTS idx_categories_ranking ON categories(ranking);
+    CREATE TABLE IF NOT EXISTS favorites (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      client_id TEXT NOT NULL,
+      tool_slug TEXT NOT NULL,
+      UNIQUE(client_id, tool_slug)
+    );
+
     CREATE INDEX IF NOT EXISTS idx_submissions_status ON tool_submissions(status);
     CREATE INDEX IF NOT EXISTS idx_newsletter_email ON newsletter_subscribers(email);
+    CREATE INDEX IF NOT EXISTS idx_favorites_client ON favorites(client_id);
   `);
 }
 
@@ -165,8 +175,32 @@ function migrateFromJson() {
     )
   `);
 
+  const insertCourse = d.prepare(`
+    INSERT OR IGNORE INTO courses (
+      slug, title, description, instructor, category, difficulty, duration,
+      popularity_score, tags, listed_at, updated_at
+    ) VALUES (
+      @slug, @title, @description, @instructor, @category, @difficulty, @duration,
+      @popularityScore, @tags, @listedAt, @updatedAt
+    )
+  `);
+
+  const insertCreator = d.prepare(`
+    INSERT OR IGNORE INTO creators (
+      slug, name, bio, avatar_url, category_focus, platform,
+      subscriber_count, monthly_views, course_count, featured,
+      featured_videos, website_url, social_links
+    ) VALUES (
+      @slug, @name, @bio, @avatarUrl, @categoryFocus, @platform,
+      @subscriberCount, @monthlyViews, @courseCount, @featured,
+      @featuredVideos, @websiteUrl, @socialLinks
+    )
+  `);
+
   let toolsMigrated = 0;
   let categoriesMigrated = 0;
+  let coursesMigrated = 0;
+  let creatorsMigrated = 0;
 
   // Migrate tools
   const toolsPath = path.join(DATA_DIR, 'tools.json');
@@ -224,7 +258,53 @@ function migrateFromJson() {
     }
   }
 
-  return { toolsMigrated, categoriesMigrated };
+  // Migrate courses
+  const coursesPath = path.join(DATA_DIR, 'courses.json');
+  if (fs.existsSync(coursesPath)) {
+    const courses = readJson(coursesPath);
+    for (const course of courses) {
+      insertCourse.run({
+        slug: course.slug,
+        title: course.title,
+        description: course.summary || course.description || '',
+        instructor: course.instructor || '',
+        category: course.category || '',
+        difficulty: course.level || course.difficulty || 'beginner',
+        duration: course.duration || '',
+        popularityScore: Number(course.popularityScore) || 50,
+        tags: JSON.stringify(course.tags || []),
+        listedAt: course.listedAt || '2026-03-01',
+        updatedAt: course.updatedAt || '2026-03-01'
+      });
+      coursesMigrated++;
+    }
+  }
+
+  // Migrate creators
+  const creatorsPath = path.join(DATA_DIR, 'creators.json');
+  if (fs.existsSync(creatorsPath)) {
+    const creators = readJson(creatorsPath);
+    for (const creator of creators) {
+      insertCreator.run({
+        slug: creator.slug,
+        name: creator.name,
+        bio: creator.bio || '',
+        avatarUrl: creator.avatarUrl || creator.avatar_url || '',
+        categoryFocus: JSON.stringify(creator.categoryFocus || creator.category_focus || []),
+        platform: creator.platform || '',
+        subscriberCount: Number(creator.subscriberCount) || 0,
+        monthlyViews: Number(creator.monthlyViews) || 0,
+        courseCount: Number(creator.courseCount) || 0,
+        featured: creator.featured ? 1 : 0,
+        featuredVideos: JSON.stringify(creator.featuredVideos || creator.featured_videos || []),
+        websiteUrl: creator.websiteUrl || creator.website_url || '',
+        socialLinks: JSON.stringify(creator.socialLinks || creator.social_links || {})
+      });
+      creatorsMigrated++;
+    }
+  }
+
+  return { toolsMigrated, categoriesMigrated, coursesMigrated, creatorsMigrated };
 }
 
 function closeDb() {

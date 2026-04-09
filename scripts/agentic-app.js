@@ -1,4 +1,4 @@
-﻿(function bootstrapLegacyFuturepediaApp() {
+﻿(function bootstrapLegacyAgenticApp() {
   const page = document.body && document.body.dataset ? document.body.dataset.page : '';
 
   const moduleByPage = {

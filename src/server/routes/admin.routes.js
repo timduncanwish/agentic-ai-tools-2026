@@ -1,7 +1,10 @@
 const express = require('express');
 const operationsService = require('../services/operations.service');
+const { requireAdminKey } = require('../middleware/admin-auth');
 
 const router = express.Router();
+
+router.use(requireAdminKey);
 
 router.get('/api/admin/overview', (_req, res) => {
   res.json(operationsService.getAdminOverview());

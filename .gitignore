@@ -33,5 +33,10 @@ Thumbs.db
 *.tmp
 *.temp
 
+# Database (generated at runtime from JSON)
+data/agentic.db
+data/agentic.db-shm
+data/agentic.db-wal
+
 .vercel
 .env*.local

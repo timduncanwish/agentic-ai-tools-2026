@@ -5,7 +5,7 @@
 Current implementation works as an MVP, but the codebase is now carrying three different concerns in one place:
 
 - API logic in `server.js`
-- homepage and page behavior in `scripts/futurepedia-app.js`
+- homepage and page behavior in `scripts/agentic-app.js`
 - content storage mixed into `data/*.json`
 
 That structure was acceptable for a tool-directory MVP. It becomes fragile once the product expands into:
@@ -30,9 +30,9 @@ That structure was acceptable for a tool-directory MVP. It becomes fragile once 
 
 - `dist/*.html`
   page shells
-- `scripts/futurepedia-app.js`
+- `scripts/agentic-app.js`
   all client behavior in one file
-- `styles/futurepedia-redesign.css`
+- `styles/agentic-redesign.css`
   single large stylesheet for homepage and discovery pages
 
 ## 3. Target Architecture
@@ -196,7 +196,7 @@ Responsibility:
 
 Current issue:
 
-- `scripts/futurepedia-app.js` handles home, directory, submit, admin all together
+- `scripts/agentic-app.js` handles home, directory, submit, admin all together
 
 Target:
 
@@ -246,7 +246,7 @@ Reason:
 
 ### Target Split
 
-`scripts/futurepedia-app.js` should be decomposed into:
+`scripts/agentic-app.js` should be decomposed into:
 
 - API client
 - favorites state
@@ -256,7 +256,7 @@ Reason:
 - admin bootstrap
 - reusable card renderers
 
-`styles/futurepedia-redesign.css` should be decomposed into:
+`styles/agentic-redesign.css` should be decomposed into:
 
 - design tokens
 - shell/navigation
@@ -306,10 +306,10 @@ Reason:
 
 ### Frontend
 
-- `scripts/futurepedia-app.js`
+- `scripts/agentic-app.js`
   split into `client/pages/*`, `client/components/*`, `client/services/api-client.js`
 
-- `styles/futurepedia-redesign.css`
+- `styles/agentic-redesign.css`
   split into `client/styles/*`
 
 ### Data
@@ -351,7 +351,7 @@ Reason:
 ## 11. Recommended Next Implementation Order
 
 1. Extract backend helpers from `server.js`.
-2. Split `futurepedia-app.js` by page.
+2. Split `agentic-app.js` by page.
 3. Add course and creator datasets.
 4. Rebuild homepage sections around feed tabs and spotlight modules.
 5. Add dedicated courses and creators pages.

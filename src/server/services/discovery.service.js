@@ -1,5 +1,4 @@
 ﻿const catalogRepository = require('../repositories/catalog.repository');
-const stateRepository = require('../repositories/state.repository');
 const { humanizeCategory, normalizeClientId } = require('../utils/common');
 const toolsService = require('./tools.service');
 const coursesService = require('./courses.service');
@@ -8,8 +7,7 @@ const categoriesService = require('./categories.service');
 const homeService = require('./home.service');
 
 function getFavoriteSlugs(clientId) {
-  const state = stateRepository.getState();
-  return state.favoritesByClientId[clientId] || [];
+  return catalogRepository.getFavoriteSlugs(clientId);
 }
 
 function getFavoriteTools(clientId) {

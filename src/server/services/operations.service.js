@@ -1,5 +1,4 @@
 const catalogRepository = require('../repositories/catalog.repository');
-const stateRepository = require('../repositories/state.repository');
 const {
   createSubmissionId,
   humanizeCategory,
@@ -42,6 +41,7 @@ function buildToolFromInput(input, existingTool = {}) {
     verified: input.verified === undefined ? normalizeBoolean(existingTool.verified) : normalizeBoolean(input.verified),
     featured: input.featured === undefined ? normalizeBoolean(existingTool.featured) : normalizeBoolean(input.featured),
     sponsored: input.sponsored === undefined ? normalizeBoolean(existingTool.sponsored) : normalizeBoolean(input.sponsored),
+    listingTier: sanitizeText(input.listingTier) || existingTool.listingTier || 'free',
     tags,
     useCases,
     websiteUrl: sanitizeText(input.websiteUrl) || existingTool.websiteUrl || '',
@@ -88,18 +88,18 @@ function validateToolInput(input) {
 
 function getAdminOverview() {
   const tools = catalogRepository.getTools();
-  const state = stateRepository.getState();
+  const submissions = catalogRepository.getSubmissions();
 
   return {
     stats: {
       totalTools: tools.length,
       featuredTools: tools.filter((tool) => tool.featured).length,
       verifiedTools: tools.filter((tool) => tool.verified).length,
-      newsletterLeads: state.newsletterLeads.length,
-      pendingSubmissions: state.submissions.filter((submission) => submission.status === 'pending').length,
-      approvedSubmissions: state.submissions.filter((submission) => submission.status === 'approved').length
+      newsletterLeads: catalogRepository.getNewsletterCount(),
+      pendingSubmissions: submissions.filter((s) => s.status === 'pending').length,
+      approvedSubmissions: submissions.filter((s) => s.status === 'approved').length
     },
-    submissions: [...state.submissions].sort((left, right) => new Date(right.createdAt) - new Date(left.createdAt)),
+    submissions: [...submissions].sort((left, right) => new Date(right.createdAt) - new Date(left.createdAt)),
     tools: discoveryService.sortTools(tools, 'featured')
   };
 }
@@ -107,30 +107,17 @@ function getAdminOverview() {
 function toggleFavorite(clientId, slug) {
   const normalizedClientId = normalizeClientId(clientId);
   const normalizedSlug = String(slug || '').trim();
-  const tools = catalogRepository.getTools();
 
   if (!normalizedClientId || !normalizedSlug) {
     return { error: 'clientId and slug are required', status: 400 };
   }
 
-  if (!tools.some((tool) => tool.slug === normalizedSlug)) {
+  const tool = catalogRepository.getToolBySlug(normalizedSlug);
+  if (!tool) {
     return { error: 'Tool not found', status: 404 };
   }
 
-  const state = stateRepository.getState();
-  const favorites = new Set(state.favoritesByClientId[normalizedClientId] || []);
-  let saved;
-
-  if (favorites.has(normalizedSlug)) {
-    favorites.delete(normalizedSlug);
-    saved = false;
-  } else {
-    favorites.add(normalizedSlug);
-    saved = true;
-  }
-
-  state.favoritesByClientId[normalizedClientId] = Array.from(favorites);
-  stateRepository.saveState(state);
+  const saved = catalogRepository.toggleFavorite(normalizedClientId, normalizedSlug);
 
   return {
     clientId: normalizedClientId,
@@ -142,24 +129,13 @@ function toggleFavorite(clientId, slug) {
 
 function subscribeNewsletter(input) {
   const email = String(input.email || '').trim().toLowerCase();
-  const role = String(input.role || '').trim();
+  const name = String(input.name || input.role || '').trim();
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: 'A valid email is required', status: 400 };
   }
 
-  const state = stateRepository.getState();
-  const exists = state.newsletterLeads.some((item) => item.email === email);
-
-  if (!exists) {
-    state.newsletterLeads.push({
-      email,
-      role,
-      source: 'site-redesign',
-      createdAt: new Date().toISOString()
-    });
-    stateRepository.saveState(state);
-  }
+  catalogRepository.subscribeNewsletter(email, name, 'site-redesign');
 
   return {
     ok: true,
@@ -189,14 +165,17 @@ function createSubmission(input) {
     return { error: 'contactEmail is invalid', status: 400 };
   }
 
-  const state = stateRepository.getState();
-  state.submissions.push({
-    id: createSubmissionId(),
-    ...payload,
-    status: 'pending',
-    createdAt: new Date().toISOString()
+  catalogRepository.submitTool({
+    submissionId: createSubmissionId(),
+    toolName: payload.name,
+    toolUrl: payload.url,
+    submitterName: '',
+    submitterEmail: payload.contactEmail,
+    category: payload.category,
+    description: payload.notes,
+    pricingModel: payload.pricingModel,
+    listingTier: 'free'
   });
-  stateRepository.saveState(state);
 
   return {
     ok: true,
@@ -206,16 +185,14 @@ function createSubmission(input) {
 }
 
 function approveSubmission(id, input) {
-  const state = stateRepository.getState();
-  const submission = state.submissions.find((item) => item.id === id);
+  const submission = catalogRepository.getSubmissionById(id);
 
   if (!submission) {
     return { error: 'Submission not found', status: 404 };
   }
 
-  const tools = catalogRepository.getTools();
-  const existing = tools.find((tool) => tool.slug === slugify(submission.name));
-  if (existing) {
+  const existingTool = catalogRepository.getToolBySlug(slugify(submission.name));
+  if (existingTool) {
     return { error: 'A tool with this slug already exists', status: 409 };
   }
 
@@ -246,37 +223,28 @@ function approveSubmission(id, input) {
     return { error: validationError, status: 400 };
   }
 
-  tools.push(tool);
-  catalogRepository.saveTools(tools);
-
-  submission.status = 'approved';
-  submission.reviewedAt = new Date().toISOString();
-  submission.approvedToolSlug = tool.slug;
-  stateRepository.saveState(state);
+  catalogRepository.saveTools([tool]);
+  catalogRepository.updateSubmissionStatus(id, 'approved');
 
   return {
     ok: true,
     tool,
-    submission
+    submission: { ...submission, status: 'approved', reviewedAt: new Date().toISOString() }
   };
 }
 
 function rejectSubmission(id, reason) {
-  const state = stateRepository.getState();
-  const submission = state.submissions.find((item) => item.id === id);
+  const submission = catalogRepository.getSubmissionById(id);
 
   if (!submission) {
     return { error: 'Submission not found', status: 404 };
   }
 
-  submission.status = 'rejected';
-  submission.reviewedAt = new Date().toISOString();
-  submission.rejectionReason = sanitizeText(reason);
-  stateRepository.saveState(state);
+  catalogRepository.updateSubmissionStatus(id, 'rejected', { adminNotes: sanitizeText(reason) });
 
   return {
     ok: true,
-    submission
+    submission: { ...submission, status: 'rejected', reviewedAt: new Date().toISOString() }
   };
 }
 
@@ -288,13 +256,11 @@ function createTool(input) {
     return { error: validationError, status: 400 };
   }
 
-  const tools = catalogRepository.getTools();
-  if (tools.some((item) => item.slug === tool.slug)) {
+  if (catalogRepository.getToolBySlug(tool.slug)) {
     return { error: 'Tool slug already exists', status: 409 };
   }
 
-  tools.push(tool);
-  catalogRepository.saveTools(tools);
+  catalogRepository.saveTools([tool]);
 
   return {
     ok: true,
@@ -304,26 +270,24 @@ function createTool(input) {
 }
 
 function updateTool(slug, input) {
-  const tools = catalogRepository.getTools();
-  const index = tools.findIndex((item) => item.slug === slug);
+  const existingTool = catalogRepository.getToolBySlug(slug);
 
-  if (index === -1) {
+  if (!existingTool) {
     return { error: 'Tool not found', status: 404 };
   }
 
-  const updatedTool = buildToolFromInput(input, tools[index]);
+  const updatedTool = buildToolFromInput(input, existingTool);
   const validationError = validateToolInput(updatedTool);
 
   if (validationError) {
     return { error: validationError, status: 400 };
   }
 
-  if (updatedTool.slug !== slug && tools.some((item) => item.slug === updatedTool.slug)) {
+  if (updatedTool.slug !== slug && catalogRepository.getToolBySlug(updatedTool.slug)) {
     return { error: 'Updated slug already exists', status: 409 };
   }
 
-  tools[index] = updatedTool;
-  catalogRepository.saveTools(tools);
+  catalogRepository.saveTools([updatedTool]);
 
   return {
     ok: true,

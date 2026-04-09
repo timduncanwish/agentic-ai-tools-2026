@@ -1,4 +1,7 @@
 const { getDb } = require('../services/db.service');
+const { readJson } = require('../utils/common');
+const paths = require('../config/paths');
+const fs = require('fs');
 
 function parseToolRow(row) {
   return {
@@ -63,8 +66,17 @@ function saveTools(tools) {
   `);
 
   const insert = db.prepare(`
-    INSERT OR IGNORE INTO tools (slug, name, category, category_label, description, tags, use_cases)
-    VALUES (@slug, @name, @category, @categoryLabel, @description, @tags, @useCases)
+    INSERT OR IGNORE INTO tools (
+      slug, name, category, category_label, subcategory, description,
+      editorial_note, pricing_model, pricing_label, rating, trending_score,
+      verified, featured, sponsored, listing_tier, tags, use_cases,
+      website_url, review_url, logo_url, save_count, vote_count
+    ) VALUES (
+      @slug, @name, @category, @categoryLabel, @subcategory, @description,
+      @editorialNote, @pricingModel, @pricingLabel, @rating, @trendingScore,
+      @verified, @featured, @sponsored, @listingTier, @tags, @useCases,
+      @websiteUrl, @reviewUrl, @logoUrl, @saveCount, @voteCount
+    )
   `);
 
   const txn = db.transaction((items) => {
@@ -88,7 +100,10 @@ function saveTools(tools) {
         tags: JSON.stringify(tool.tags || []),
         useCases: JSON.stringify(tool.useCases || []),
         websiteUrl: tool.websiteUrl || '',
-        reviewUrl: tool.reviewUrl || ''
+        reviewUrl: tool.reviewUrl || '',
+        logoUrl: tool.logoUrl || '',
+        saveCount: Number(tool.saveCount) || 0,
+        voteCount: Number(tool.voteCount) || 0
       };
       const changed = update.run(row).changes;
       if (changed === 0) {
@@ -119,6 +134,7 @@ function getCourses() {
   return rows.map((row) => ({
     ...row,
     tags: JSON.parse(row.tags || '[]'),
+    level: row.difficulty,
     popularityScore: row.popularity_score,
     listedAt: row.listed_at,
     updatedAt: row.updated_at
@@ -131,9 +147,11 @@ function getCreators() {
   return rows.map((row) => ({
     ...row,
     categoryFocus: JSON.parse(row.category_focus || '[]'),
+    platform: row.platform || '',
     subscriberCount: row.subscriber_count,
     monthlyViews: row.monthly_views,
     courseCount: row.course_count,
+    featured: Boolean(row.featured),
     featuredVideos: JSON.parse(row.featured_videos || '[]'),
     socialLinks: JSON.parse(row.social_links || '{}')
   }));
@@ -151,10 +169,55 @@ function submitTool(submission) {
 
 function getSubmissions(status) {
   const db = getDb();
-  if (status) {
-    return db.prepare('SELECT * FROM tool_submissions WHERE status = ? ORDER BY submitted_at DESC').all(status);
+  const sql = status
+    ? 'SELECT * FROM tool_submissions WHERE status = ? ORDER BY submitted_at DESC'
+    : 'SELECT * FROM tool_submissions ORDER BY submitted_at DESC';
+  const rows = status ? db.prepare(sql).all(status) : db.prepare(sql).all();
+  return rows.map((row) => ({
+    id: row.submission_id,
+    name: row.tool_name,
+    url: row.tool_url,
+    category: row.category || '',
+    contactEmail: row.submitter_email || '',
+    pricingModel: row.pricing_model || '',
+    notes: row.description || '',
+    status: row.status,
+    createdAt: row.submitted_at,
+    reviewedAt: row.reviewed_at,
+    adminNotes: row.admin_notes
+  }));
+}
+
+function getSubmissionById(id) {
+  const db = getDb();
+  const row = db.prepare('SELECT * FROM tool_submissions WHERE submission_id = ?').get(id);
+  if (!row) return null;
+  return {
+    id: row.submission_id,
+    name: row.tool_name,
+    url: row.tool_url,
+    category: row.category || '',
+    contactEmail: row.submitter_email || '',
+    pricingModel: row.pricing_model || '',
+    notes: row.description || '',
+    status: row.status,
+    createdAt: row.submitted_at,
+    reviewedAt: row.reviewed_at,
+    adminNotes: row.admin_notes
+  };
+}
+
+function updateSubmissionStatus(id, status, extra = {}) {
+  const db = getDb();
+  const fields = ['status = @status', 'reviewed_at = datetime("now")'];
+  const params = { submission_id: id, status };
+
+  if (extra.adminNotes !== undefined) {
+    fields.push('admin_notes = @adminNotes');
+    params.adminNotes = extra.adminNotes;
   }
-  return db.prepare('SELECT * FROM tool_submissions ORDER BY submitted_at DESC').all();
+
+  db.prepare(`UPDATE tool_submissions SET ${fields.join(', ')} WHERE submission_id = @submission_id`).run(params);
 }
 
 function subscribeNewsletter(email, name, source) {
@@ -166,9 +229,47 @@ function subscribeNewsletter(email, name, source) {
   return insert.run({ email, name: name || '', source: source || 'website' }).changes;
 }
 
+function getNewsletterSubscribers() {
+  const db = getDb();
+  return db.prepare('SELECT * FROM newsletter_subscribers WHERE active = 1 ORDER BY subscribed_at DESC').all()
+    .map((row) => ({
+      email: row.email,
+      name: row.name,
+      source: row.source,
+      createdAt: row.subscribed_at
+    }));
+}
+
 function getNewsletterCount() {
   const db = getDb();
   return db.prepare('SELECT COUNT(*) as count FROM newsletter_subscribers WHERE active = 1').get().count;
+}
+
+// --- Favorites ---
+
+function getFavoriteSlugs(clientId) {
+  const db = getDb();
+  const rows = db.prepare('SELECT tool_slug FROM favorites WHERE client_id = ?').all(clientId);
+  return rows.map((r) => r.tool_slug);
+}
+
+function toggleFavorite(clientId, toolSlug) {
+  const db = getDb();
+  const existing = db.prepare('SELECT id FROM favorites WHERE client_id = ? AND tool_slug = ?').get(clientId, toolSlug);
+  if (existing) {
+    db.prepare('DELETE FROM favorites WHERE id = ?').run(existing.id);
+    return false;
+  }
+  db.prepare('INSERT INTO favorites (client_id, tool_slug) VALUES (?, ?)').run(clientId, toolSlug);
+  return true;
+}
+
+function getHomeConfig() {
+  const defaults = { hero: {}, trustStrip: [], feedTabs: [], creatorSpotlightSlug: '' };
+  if (!fs.existsSync(paths.HOME_CONFIG_FILE)) {
+    return defaults;
+  }
+  return { ...defaults, ...readJson(paths.HOME_CONFIG_FILE) };
 }
 
 module.exports = {
@@ -178,8 +279,14 @@ module.exports = {
   getCategories,
   getCourses,
   getCreators,
+  getHomeConfig,
   submitTool,
   getSubmissions,
+  getSubmissionById,
+  updateSubmissionStatus,
   subscribeNewsletter,
-  getNewsletterCount
+  getNewsletterSubscribers,
+  getNewsletterCount,
+  getFavoriteSlugs,
+  toggleFavorite
 };

@@ -24,7 +24,7 @@ function startServer(port = PORT) {
   getDb();
   const migration = migrateFromJson();
   if (!migration.skipped) {
-    console.log(`Database migrated: ${migration.toolsMigrated} tools, ${migration.categoriesMigrated} categories`);
+    console.log(`Database migrated: ${migration.toolsMigrated} tools, ${migration.categoriesMigrated} categories, ${migration.coursesMigrated} courses, ${migration.creatorsMigrated} creators`);
   }
 
   return app.listen(port, () => {
